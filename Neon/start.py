@@ -50,7 +50,7 @@ async def start(bot: Client, msg: Message):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
-        text=f"""<b>𝐇𝐞𝐲 {msg.from_user.mention}🍷,\n\nɪ ᴀᴍ {me},\nᴛʀᴜsᴛᴇᴅ 𝗦𝗧𝗥𝗜𝗡𝗚 𝗚𝗥𝗡𝗘𝗥𝗔𝗧𝗢𝗥 ʙᴏᴛ.ғᴜʟʟʏ sᴀғᴇ & sᴇᴄᴜʀᴇ.\nɴᴏ ᴀɴʏ ᴇʀʀᴏʀ\n\nMade With By : [VJ Botz](https://t.me/VJ_Botz) !</b>""",
+        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 𝟷𝟶𝟶% Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
@@ -75,7 +75,7 @@ async def chk(bot : Client, cb : CallbackQuery):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=cb.from_user.id,
-        text=f"""<b>𝐇𝐞𝐲 {cb.from_user.mention}🍷,\n\nI Aᴍ {me},\nTʀᴜsᴛᴇᴅ 𝗦𝗧𝗥𝗜𝗡𝗚 𝗚𝗥𝗡𝗘𝗥𝗔𝗧𝗢𝗥 ʙᴏᴛ.ғᴜʟʟʏ sᴀғᴇ & sᴇᴄᴜʀᴇ.\nɴᴏ ᴀɴʏ ᴇʀʀᴏʀ\n\nMade With By : [VJ Botz](https://t.me/VJ_Botz) !</b>""",
+        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 𝟷𝟶𝟶% Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],

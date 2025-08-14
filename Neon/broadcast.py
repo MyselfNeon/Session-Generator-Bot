@@ -57,13 +57,13 @@ async def verupikkals(bot, message):
                     failed += 1
             done += 1
             if not done % 20:
-                await sts.edit(f"**📢 __Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")    
+                await sts.edit(f"**📢 __--Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss--__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**🚫 __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")    
         else:
             # Handle the case where 'id' key is missing in the user dictionary
             done += 1
             failed += 1
             if not done % 20:
-                await sts.edit(f"**📢 __Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖__Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
+                await sts.edit(f"**📢 __--Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss--__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖__Sᴜᴄᴄᴇss__**: {success}\n**🚫 __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
     
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
     await sts.edit(f"**📢 __Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ__**:\n\n**⏰ __Cᴏᴍᴘʟᴇᴛᴇᴅ Iɴ {time_taken} Sᴇᴄᴏɴᴅs__**.\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
