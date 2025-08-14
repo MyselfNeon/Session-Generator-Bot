@@ -67,7 +67,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         ty += " Bᴏᴛ"
     await msg.reply(f"**__Tʀʏɪɴɢ Tᴏ Sᴛᴀʀᴛ {ty} Sᴇssɪᴏɴ Gᴇɴᴇʀᴀᴛᴏʀ__**...")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "**__Sᴇɴᴅ Yᴏᴜʀ API ID Tᴏ Pʀᴏᴄᴇᴇᴅ.\n\nCʟɪᴄᴋ Oɴ /skip Fᴏʀ Usɪɴɢ Bᴏᴛ Aᴘɪ.__**", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "**__Sᴇɴᴅ Yᴏᴜʀ --Aᴘɪ Iᴅ-- Tᴏ Pʀᴏᴄᴇᴇᴅ.\n\nCʟɪᴄᴋ Oɴ /skip Fᴏʀ Usɪɴɢ Bᴏᴛ Aᴘɪ.__**", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -77,16 +77,16 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         try:
             api_id = int(api_id_msg.text)
         except ValueError:
-            await api_id_msg.reply("**__API ID Mᴜsᴛ Bᴇ Aɴ Iɴᴛᴇɢᴇʀ,\nSᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+            await api_id_msg.reply("**__--Aᴘɪ Iᴅ-- Mᴜsᴛ Bᴇ Aɴ Iɴᴛᴇɢᴇʀ,\nSᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, "**__Nᴏᴡ Sᴇɴᴅ Yᴏᴜʀ API HASH Tᴏ Cᴏɴᴛɪɴᴜᴇ.__**", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, "**__Nᴏᴡ Sᴇɴᴅ Yᴏᴜʀ --Aᴘɪ Hᴀsʜ-- Tᴏ Cᴏɴᴛɪɴᴜᴇ.__**", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
         t = "**__Sᴇɴᴅ Yᴏᴜʀ Pʜᴏɴᴇ Nᴜᴍʙᴇʀ Wɪᴛʜ Cᴏᴜɴᴛʀʏ Cᴏᴅᴇ Fᴏʀ Wʜɪᴄʜ Yᴏᴜ Wᴀɴᴛ ᴛᴏ Gᴇɴᴇʀᴀᴛᴇ Sᴇssɪᴏɴ__** \n**__Exᴀᴍᴘʟᴇ__** : `+9100000000`'"
     else:
-        t = "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Yᴏᴜʀ BOT TOKEN Tᴏ Cᴏɴᴛɪɴᴜᴇ.\nExᴀᴍᴩʟᴇ__** : `123456789:neonisthebestonearound`'"
+        t = "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Yᴏᴜʀ --Bᴏᴛ Tᴏᴋᴇɴ-- Tᴏ Cᴏɴᴛɪɴᴜᴇ.\nExᴀᴍᴩʟᴇ__** : `123456789:neonisthebestonearound`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
@@ -112,15 +112,15 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             else:
                 code = await client.send_code(phone_number)
     except (ApiIdInvalid, ApiIdInvalidError):
-        await msg.reply("**__Yᴏᴜʀ API ID Aɴᴅ API HASH Cᴏᴍʙɪɴᴀᴛɪᴏɴ Dᴏᴇsɴ'ᴛ Mᴀᴛᴄʜ Wɪᴛʜ Tᴇʟᴇɢʀᴀᴍ Aᴩᴩs Sʏsᴛᴇᴍ. \n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Yᴏᴜʀ --Aᴘɪ Iᴅ-- Aɴᴅ --Aᴘɪ Hᴀsʜ-- Cᴏᴍʙɪɴᴀᴛɪᴏɴ Dᴏᴇsɴ'ᴛ Mᴀᴛᴄʜ Wɪᴛʜ Tᴇʟᴇɢʀᴀᴍ Aᴩᴩs Sʏsᴛᴇᴍ. \n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     except (PhoneNumberInvalid, PhoneNumberInvalidError):
-        await msg.reply("**__Tʜᴇ PHONE NUMBER Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Dᴏᴇsɴ'ᴛ Bᴇʟᴏɴɢ Tᴏ Aɴʏ Tᴇʟᴇɢʀᴀᴍ Aᴄᴄᴏᴜɴᴛ.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Tʜᴇ --Pʜᴏɴᴇ Nᴜᴍʙᴇʀ-- Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Dᴏᴇsɴ'ᴛ Bᴇʟᴏɴɢ Tᴏ Aɴʏ Tᴇʟᴇɢʀᴀᴍ Aᴄᴄᴏᴜɴᴛ.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     try:
         phone_code_msg = None
         if not is_bot:
-            phone_code_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Tʜᴇ OTP Tʜᴀᴛ Yᴏᴜ'ᴠᴇ Rᴇᴄᴇɪᴠᴇᴅ Fʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ Oɴ Yᴏᴜʀ Aᴄᴄᴏᴜɴᴛ.\nIғ OTP Is__ `12345`, **__Pʟᴇᴀsᴇ Sᴇɴᴅ Iᴛ As__** `1 2 3 4 5`.**", filters=filters.text, timeout=600)
+            phone_code_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Tʜᴇ OTP Tʜᴀᴛ Yᴏᴜ'ᴠᴇ Rᴇᴄᴇɪᴠᴇᴅ Fʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ Oɴ Yᴏᴜʀ Aᴄᴄᴏᴜɴᴛ.\nSᴜᴘᴘᴏsᴇ OTP Rᴇᴄᴇɪᴠᴇᴅ Is**__ `12345`,\n**__Sᴇɴᴅ Iᴛ As__** `1 2 3 4 5`.", filters=filters.text, timeout=600)
             if await cancelled(phone_code_msg):
                 return
     except TimeoutError:
@@ -134,14 +134,14 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             else:
                 await client.sign_in(phone_number, code.phone_code_hash, phone_code)
         except (PhoneCodeInvalid, PhoneCodeInvalidError):
-            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is Wrong\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is --Wʀᴏɴɢ--\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError):
-            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is Expired\n\nᴩʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is --Exᴘɪʀᴇᴅ--\n\nᴩʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError):
             try:
-                two_step_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Eɴᴛᴇʀ Yᴏᴜʀ Two Steps Verification Pᴀssᴡᴏʀᴅ Tᴏ Cᴏɴᴛɪɴᴜᴇ__**", filters=filters.text, timeout=300)
+                two_step_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Eɴᴛᴇʀ Yᴏᴜʀ --Tᴡᴏ Sᴛᴇᴘs Vᴇʀɪғɪᴄᴀᴛɪᴏɴ-- Pᴀssᴡᴏʀᴅ Tᴏ Cᴏɴᴛɪɴᴜᴇ__**", filters=filters.text, timeout=300)
             except TimeoutError:
                 await msg.reply("**__Tɪᴍᴇ Lɪᴍɪᴛ Rᴇᴀᴄʜᴇᴅ Oғ 05 Mɪɴᴜᴛᴇs.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
                 return
@@ -165,7 +165,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**__Tʜɪs Is Yᴏᴜʀ {ty} Sᴛʀɪɴɢ Sᴇssɪᴏɴ__** \n\n`{string_session}` \n\n**𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 :- @VJ_Botz\n⚡ **𝐍𝐎𝐓𝐄 :** 𝐃𝐨𝐧𝐭 𝐒𝐡𝐚𝐫𝐞 𝐖𝐢𝐭𝐡 𝐀𝐧𝐲𝐨𝐧𝐞 𝐁𝐞𝐜𝐚𝐮𝐬𝐞 𝐇𝐞 𝐂𝐚𝐧 𝐇𝐚𝐜𝐤 𝐘𝐨𝐮𝐫 𝐀𝐥𝐥 𝐃𝐚𝐭𝐚. 🙂 𝐀𝐧𝐝 𝐃𝐨𝐧𝐭 𝐅𝐨𝐫𝐠𝐞𝐭 𝐓𝐨 𝐉𝐨𝐢𝐧 <b>@VJ_Botz & @VJ_Bot_Disscussion</b> 🥺"
+    text = f"**__Tʜɪs Is Yᴏᴜʀ {ty} Sᴛʀɪɴɢ Sᴇssɪᴏɴ__** \n\n`{string_session}` \n\n**__⚡ Gᴇɴᴇʀᴀᴛᴇᴅ Bʏ @NeonFiles ⚡__**\n\n<blockquote>‣ **𝐍𝐎𝐓𝐄**</blockquote>\n**__Dᴏ Nᴏᴛ Sʜᴀʀᴇ Tʜɪs Iɴғᴏʀᴍᴀᴛɪᴏɴ Wɪᴛʜ Aɴʏᴏɴᴇ. Iᴛ Cᴏᴜʟᴅ Pᴏᴛᴇɴᴛɪᴀʟʟʏ Cᴏᴍᴘʀᴏᴍɪsᴇ Aʟʟ Oғ Yᴏᴜʀ Dᴀᴛᴀ !!__**"
     try:
         if not is_bot:
             await client.send_message("me", text)
@@ -174,7 +174,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     except KeyError:
         pass
     await client.disconnect()
-    await bot.send_message(msg.chat.id, "» 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐆𝐫𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐘𝐨𝐮 {} 𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧.\n\n𝐏𝐥𝐞𝐚𝐬𝐞 𝐂𝐡𝐞𝐜𝐤 𝐘𝐨𝐮𝐫 𝐒𝐚𝐯𝐞𝐝 𝐌𝐞𝐬𝐬𝐚𝐠𝐞 𝐓𝐨 𝐆𝐞𝐭 𝐈𝐭 ! \n\n𝐀 𝐒𝐭𝐫𝐢𝐧𝐠  𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐨𝐫 𝐁𝐨𝐭 𝐁𝐲 @VJ_Bot_Disscussion ♦".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
+    await bot.send_message(msg.chat.id, "**__Sᴜᴄᴄᴇssғᴜʟʟʏ Gᴇɴᴇʀᴀᴛᴇᴅ Yᴏᴜʀ__** {} **__Sᴛʀɪɴɢ Sᴇssɪᴏɴ\n\nPʟᴇᴀsᴇ Cʜᴇᴄᴋ Yᴏᴜʀ Sᴀᴠᴇᴅ Mᴇssᴀɢᴇs Cʜᴀᴛ Tᴏ Vɪᴇᴡ Iᴛ\n\nA Pᴏᴡᴇʀғᴜʟ Sᴛʀɪɴɢ Sᴇssɪᴏɴ Gᴇɴᴇʀᴀᴛᴏʀ Bᴏᴛ Dᴇᴠᴇʟᴏᴘᴇᴅ Bʏ @MyselfNeon__**".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
 
 async def cancelled(msg):
