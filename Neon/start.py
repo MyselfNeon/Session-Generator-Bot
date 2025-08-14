@@ -33,12 +33,12 @@ async def start(bot: Client, msg: Message):
             try:
                 invite_link = await bot.create_chat_invite_link(int(F_SUB))
             except:
-                await msg.reply("**Make Sure I Am Admin In Your Channel**")
+                await msg.reply("**__Mᴀᴋᴇ Sᴜʀᴇ I Aᴍ Aᴅᴍɪɴ Iɴ Yᴏᴜʀ Cʜᴀɴɴᴇʟ__**")
                 return 
             key = InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("🍿 Join Update Channel 🍿", url=invite_link.invite_link),
-                    InlineKeyboardButton("🍀 Check Again 🍀", callback_data="chk")
+                    InlineKeyboardButton("Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link),
+                    InlineKeyboardButton("Tʀʏ Aɢᴀɪɴ", callback_data="chk")
                 ]]
             ) 
             await msg.reply_text(
@@ -69,20 +69,20 @@ async def chk(bot : Client, cb : CallbackQuery):
         await bot.get_chat_member(int(F_SUB), cb.from_user.id)
     except:
         await cb.answer(
-            "🙅‍♂️ You are not joined my channel first join channel then check again. 🙅‍♂️",
+            "**__Yᴏᴜ Hᴀᴠᴇ Jᴏɪɴᴇᴅ Mʏ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ. Pʟᴇᴀsᴇ Jᴏɪɴ Iᴛ Aɴᴅ Tʜᴇɴ Cʟɪᴄᴋ Tʀʏ Aɢᴀɪɴ__**",
             show_alert=True
         )
         return 
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=cb.from_user.id,
-        text=f"""<b>𝐇𝐞𝐲 {cb.from_user.mention}🍷,\n\nɪ ᴀᴍ {me},\nᴛʀᴜsᴛᴇᴅ 𝗦𝗧𝗥𝗜𝗡𝗚 𝗚𝗥𝗡𝗘𝗥𝗔𝗧𝗢𝗥 ʙᴏᴛ.ғᴜʟʟʏ sᴀғᴇ & sᴇᴄᴜʀᴇ.\nɴᴏ ᴀɴʏ ᴇʀʀᴏʀ\n\nMade With By : [VJ Botz](https://t.me/VJ_Botz) !</b>""",
+        text=f"""<b>𝐇𝐞𝐲 {cb.from_user.mention}🍷,\n\nI Aᴍ {me},\nTʀᴜsᴛᴇᴅ 𝗦𝗧𝗥𝗜𝗡𝗚 𝗚𝗥𝗡𝗘𝗥𝗔𝗧𝗢𝗥 ʙᴏᴛ.ғᴜʟʟʏ sᴀғᴇ & sᴇᴄᴜʀᴇ.\nɴᴏ ᴀɴʏ ᴇʀʀᴏʀ\n\nMade With By : [VJ Botz](https://t.me/VJ_Botz) !</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="⚡ Generate String Session ⚡", callback_data="generate")],
+                [InlineKeyboardButton(text="Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
                 [
-                    InlineKeyboardButton("❣️ Support Group ❣️", url="https://t.me/VJ_Bot_Disscussion"),
-                    InlineKeyboardButton("🥀 Update Channel 🥀", url="https://t.me/VJ_Botz")
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ", url="https://t.me/VJ_Bot_Disscussion"),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇs", url="https://t.me/NeonFiles")
                 ]
             ]
         )
