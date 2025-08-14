@@ -12,17 +12,16 @@ MY_CUSTOM_LINKS = {
 async def start(bot: Client, msg: Message):
     args = msg.text.split(maxsplit=1)
 
-    # 1️⃣ Handle deep-link parameter if present
+    # Handle deep-link parameter
     if len(args) > 1:
         key = args[1]
         if key in MY_CUSTOM_LINKS:
-            await msg.reply_text(f"Here’s your link: {MY_CUSTOM_LINKS[key]}")
+            await msg.reply_text(f"**__Hᴇʀᴇ's Yᴏᴜʀ Lɪɴᴋ__**:\n {MY_CUSTOM_LINKS[key]}")
             return
         else:
             await msg.reply_text(f"You started me with: {key}")
             return
 
-    # 2️⃣ Normal /start → (no 'Yes I am Alive', just original behaviour)
     if not await db.is_user_exist(msg.from_user.id):
         await db.add_user(msg.from_user.id, msg.from_user.first_name)
 
@@ -37,8 +36,8 @@ async def start(bot: Client, msg: Message):
                 return 
             key = InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link),
-                    InlineKeyboardButton("Tʀʏ Aɢᴀɪɴ", callback_data="chk")
+                    InlineKeyboardButton("📢 Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link),
+                    InlineKeyboardButton("♻️ Tʀʏ Aɢᴀɪɴ", callback_data="chk")
                 ]]
             ) 
             await msg.reply_text(
@@ -54,10 +53,10 @@ async def start(bot: Client, msg: Message):
         text=f"""<b>𝐇𝐞𝐲 {msg.from_user.mention}🍷,\n\nɪ ᴀᴍ {me},\nᴛʀᴜsᴛᴇᴅ 𝗦𝗧𝗥𝗜𝗡𝗚 𝗚𝗥𝗡𝗘𝗥𝗔𝗧𝗢𝗥 ʙᴏᴛ.ғᴜʟʟʏ sᴀғᴇ & sᴇᴄᴜʀᴇ.\nɴᴏ ᴀɴʏ ᴇʀʀᴏʀ\n\nMade With By : [VJ Botz](https://t.me/VJ_Botz) !</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="⚡ Generate String Session ⚡", callback_data="generate")],
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
                 [
-                    InlineKeyboardButton("❣️ Support Group ❣️", url="https://t.me/VJ_Bot_Disscussion"),
-                    InlineKeyboardButton("🥀 Update Channel 🥀", url="https://t.me/VJ_Botz")
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/VJ_Bot_Disscussion"),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
                 ]
             ]
         )
@@ -79,10 +78,10 @@ async def chk(bot : Client, cb : CallbackQuery):
         text=f"""<b>𝐇𝐞𝐲 {cb.from_user.mention}🍷,\n\nI Aᴍ {me},\nTʀᴜsᴛᴇᴅ 𝗦𝗧𝗥𝗜𝗡𝗚 𝗚𝗥𝗡𝗘𝗥𝗔𝗧𝗢𝗥 ʙᴏᴛ.ғᴜʟʟʏ sᴀғᴇ & sᴇᴄᴜʀᴇ.\nɴᴏ ᴀɴʏ ᴇʀʀᴏʀ\n\nMade With By : [VJ Botz](https://t.me/VJ_Botz) !</b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ", url="https://t.me/VJ_Bot_Disscussion"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇs", url="https://t.me/NeonFiles")
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/VJ_Bot_Disscussion"),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
                 ]
             ]
         )

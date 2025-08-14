@@ -31,9 +31,9 @@ async def verupikkals(bot, message):
     users = await db.get_all_users()
     b_msg = message.reply_to_message
     if not b_msg:
-        return await message.reply_text("**__Reply This Command To Your Broadcast Message__**")
+        return await message.reply_text("**__Rᴇᴘʟʏ Tʜɪs Cᴏᴍᴍᴀɴᴅ Tᴏ Yᴏᴜʀ Bʀᴏᴀᴅᴄᴀsᴛ Mᴇssᴀɢᴇ__**")
     sts = await message.reply_text(
-        text='Broadcasting your messages...'
+        text='**📢 __Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Yᴏᴜʀ Mᴇssᴀɢᴇs__**'
     )
     start_time = time.time()
     total_users = await db.total_users_count()
@@ -57,13 +57,13 @@ async def verupikkals(bot, message):
                     failed += 1
             done += 1
             if not done % 20:
-                await sts.edit(f"Broadcast in progress:\n\nTᴏᴛᴀʟ Usᴇʀs: {total_users}\nCᴏᴍᴘʟᴇᴛᴇᴅ: {done} / {total_users}\nSᴜᴄᴄᴇss: {success}\nBʟᴏᴄᴋᴇᴅ: {blocked}\nDᴇʟᴇᴛᴇᴅ: {deleted}")    
+                await sts.edit(f"**📢 __Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")    
         else:
             # Handle the case where 'id' key is missing in the user dictionary
             done += 1
             failed += 1
             if not done % 20:
-                await sts.edit(f"Broadcast in progress:\n\nTᴏᴛᴀʟ Usᴇʀs: {total_users}\nCᴏᴍᴘʟᴇᴛᴇᴅ: {done} / {total_users}\nSᴜᴄᴄᴇss: {success}\nBʟᴏᴄᴋᴇᴅ: {blocked}\nDᴇʟᴇᴛᴇᴅ: {deleted}")
+                await sts.edit(f"**📢 __Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖__Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
     
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
-    await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTᴏᴛᴀʟ Usᴇʀs: {total_users}\nCᴏᴍᴘʟᴇᴛᴇᴅ: {done} / {total_users}\nSᴜᴄᴄᴇss: {success}\nBʟᴏᴄᴋᴇᴅ: {blocked}\nDᴇʟᴇᴛᴇᴅ: {deleted}")
+    await sts.edit(f"**📢 __Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ__**:\n\n**⏰ __Cᴏᴍᴘʟᴇᴛᴇᴅ Iɴ {time_taken} Sᴇᴄᴏɴᴅs__**.\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
