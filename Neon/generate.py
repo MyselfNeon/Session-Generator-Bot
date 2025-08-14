@@ -22,7 +22,7 @@ from telethon.errors import (
     PasswordHashInvalidError
 )
 
-ask_ques = "**» ▷ ᴄʜᴏᴏsᴇ ᴛʜᴇ sᴛʀɪɴɢ ᴡʜɪᴄʜ ʏᴏᴜ ᴡᴀɴᴛ ✔️ : :**"
+ask_ques = "**__Cʜᴏᴏsᴇ Tʜᴇ Sᴛʀɪɴɢ Wʜɪᴄʜ Yᴏᴜ Wᴀɴᴛ Tᴏ Gᴇɴᴇʀᴀᴛᴇ Fʀᴏᴍ Bᴇʟᴏᴡ 👇__**"
 buttons_ques = [
     [
         InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
@@ -33,7 +33,7 @@ buttons_ques = [
     ]
 ]
 
-gen_button = [[InlineKeyboardButton(text="Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")]]
+gen_button = [[InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")]]
 
 @Client.on_message(filters.private & ~filters.forwarded & filters.command(["generate", "gen", "string", "str"]))
 async def main(_, msg):
@@ -49,15 +49,15 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             try:
                 invite_link = await bot.create_chat_invite_link(int(config.F_SUB))
             except:
-                await msg.reply("**Make Sure I Am Admin In Your Channel**")
+                await msg.reply("**__Mᴀᴋᴇ Sᴜʀᴇ I Aᴍ Aᴅᴍɪɴ Iɴ Yᴏᴜʀ Cʜᴀɴɴᴇʟ Wɪᴛʜ Fᴜʟʟ Rɪɢʜᴛs Gɪᴠᴇɴ 🛐__**")
                 return
             key = InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link),
+                    InlineKeyboardButton("Jᴏɪɴ Uᴘᴅᴀᴛᴇs", url=invite_link.invite_link),
                     InlineKeyboardButton("Tʀʏ Aɢᴀɪɴ", callback_data="chk")
                 ]]
             ) 
-            await msg.reply_text("**⚠️Access Denied!⚠️\n\nPlease Join My Update Channel To Use Me.If You Joined The Channel Then Click On Check Again Button To Confirm.**", reply_markup=key)
+            await msg.reply_text("<i><b><blockquote>🚫 𝐀𝐂𝐂𝐄𝐒𝐒 𝐃𝐄𝐍𝐈𝐄𝐃</blockquote>\n\nJᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Mᴇ Oɴᴄᴇ Yᴏᴜ’ᴠᴇ Jᴏɪɴᴇᴅ, Cʟɪᴄᴋ Tʜᴇ “Tʀʏ Aɢᴀɪɴ” Bᴜᴛᴛᴏɴ Tᴏ Cᴏɴғɪʀᴍ Yᴏᴜʀ Sᴜʙsᴄʀɪᴘᴛɪᴏɴ Aɴᴅ Gᴀɪɴ Aᴄᴄᴇss.\n\nTʜᴀɴᴋ Yᴏᴜ Fᴏʀ Sᴛᴀʏɪɴɢ Uᴘᴅᴀᴛᴇᴅ !!</b></i>", reply_markup=key)
             return 
     if telethon:
         ty = "Tᴇʟᴇᴛʜᴏɴ"
@@ -65,9 +65,9 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         ty = "Pʏʀᴏɢʀᴀᴍ"
     if is_bot:
         ty += " Bᴏᴛ"
-    await msg.reply(f"» 𝗧𝗥𝗬𝗜𝗡𝗚 𝗧𝗢 𝗦𝗧𝗔𝗥𝗧 **{ty}** 𝗦𝗘𝗦𝗦𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗧𝗢𝗥...")
+    await msg.reply(f"**__Tʀʏɪɴɢ Tᴏ Sᴛᴀʀᴛ {ty} Sᴇssɪᴏɴ Gᴇɴᴇʀᴀᴛᴏʀ__**...")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "**__Sᴇɴᴅ Yᴏᴜʀ API_ID Tᴏ Pʀᴏᴄᴇᴇᴅ.\n\nCʟɪᴄᴋ Oɴ /skip Fᴏʀ Usɪɴɢ Bᴏᴛ Aᴘɪ.__**", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "**__Sᴇɴᴅ Yᴏᴜʀ API ID Tᴏ Pʀᴏᴄᴇᴇᴅ.\n\nCʟɪᴄᴋ Oɴ /skip Fᴏʀ Usɪɴɢ Bᴏᴛ Aᴘɪ.__**", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -77,24 +77,24 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         try:
             api_id = int(api_id_msg.text)
         except ValueError:
-            await api_id_msg.reply("**__API_ID Mᴜsᴛ Bᴇ Aɴ Iɴᴛᴇɢᴇʀ, Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+            await api_id_msg.reply("**__API ID Mᴜsᴛ Bᴇ Aɴ Iɴᴛᴇɢᴇʀ,\nSᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, "Nᴏᴡ Sᴇɴᴅ Yᴏᴜʀ API_HASH Tᴏ Cᴏɴᴛɪɴᴜᴇ.", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, "**__Nᴏᴡ Sᴇɴᴅ Yᴏᴜʀ API HASH Tᴏ Cᴏɴᴛɪɴᴜᴇ.__**", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "**__Sᴇɴᴅ Yᴏᴜʀ Pʜᴏɴᴇ Nᴜᴍʙᴇʀ Wɪᴛʜ Cᴏᴜɴᴛʀʏ Cᴏᴅᴇ Fᴏʀ Wʜɪᴄʜ Yᴏᴜ Wᴀɴᴛ ᴛᴏ Gᴇɴᴇʀᴀᴛᴇ Sᴇssɪᴏɴ__** \n𝗘𝗫𝗔𝗠𝗣𝗟𝗘 : `+910000000000`'"
+        t = "**__Sᴇɴᴅ Yᴏᴜʀ Pʜᴏɴᴇ Nᴜᴍʙᴇʀ Wɪᴛʜ Cᴏᴜɴᴛʀʏ Cᴏᴅᴇ Fᴏʀ Wʜɪᴄʜ Yᴏᴜ Wᴀɴᴛ ᴛᴏ Gᴇɴᴇʀᴀᴛᴇ Sᴇssɪᴏɴ__** \n**__Exᴀᴍᴘʟᴇ__** : `+9100000000`'"
     else:
-        t = "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Yᴏᴜʀ BOT_TOKEN Tᴏ Cᴏɴᴛɪɴᴜᴇ.\nExᴀᴍᴩʟᴇ : `123456789:neonisthebestonearound`'"
+        t = "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Yᴏᴜʀ BOT TOKEN Tᴏ Cᴏɴᴛɪɴᴜᴇ.\nExᴀᴍᴩʟᴇ__** : `123456789:neonisthebestonearound`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
     if not is_bot:
-        await msg.reply("**__Tʀʏɪɴɢ Tᴏ Sᴇɴᴅ OTP Aᴛ Tʜᴇ Gɪᴠᴇɴ Nᴜᴍʙᴇʀ...__**")
+        await msg.reply("**__Tʀʏɪɴɢ Tᴏ Sᴇɴᴅ OTP Aᴛ Tʜᴇ Gɪᴠᴇɴ Nᴜᴍʙᴇʀ__**")
     else:
-        await msg.reply("**__Tʀʏɪɴɢ Tᴏ Lᴏɢɪɴ Vɪᴀ Bᴏᴛ Tᴏᴋᴇɴ...__**")
+        await msg.reply("**__Tʀʏɪɴɢ Tᴏ Lᴏɢɪɴ Vɪᴀ Bᴏᴛ Tᴏᴋᴇɴ__**")
     if telethon and is_bot:
         client = TelegramClient(StringSession(), api_id, api_hash)
     elif telethon:
@@ -112,19 +112,19 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             else:
                 code = await client.send_code(phone_number)
     except (ApiIdInvalid, ApiIdInvalidError):
-        await msg.reply("**__Yᴏᴜʀ API_ID Aɴᴅ API_HASH Cᴏᴍʙɪɴᴀᴛɪᴏɴ Dᴏᴇsɴ'ᴛ Mᴀᴛᴄʜ Wɪᴛʜ Tᴇʟᴇɢʀᴀᴍ Aᴩᴩs Sʏsᴛᴇᴍ. \n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Yᴏᴜʀ API ID Aɴᴅ API HASH Cᴏᴍʙɪɴᴀᴛɪᴏɴ Dᴏᴇsɴ'ᴛ Mᴀᴛᴄʜ Wɪᴛʜ Tᴇʟᴇɢʀᴀᴍ Aᴩᴩs Sʏsᴛᴇᴍ. \n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     except (PhoneNumberInvalid, PhoneNumberInvalidError):
-        await msg.reply("**__Tʜᴇ PHONE_NUMBER Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Dᴏᴇsɴ'ᴛ Bᴇʟᴏɴɢ Tᴏ Aɴʏ Tᴇʟᴇɢʀᴀᴍ Aᴄᴄᴏᴜɴᴛ.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Tʜᴇ PHONE NUMBER Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Dᴏᴇsɴ'ᴛ Bᴇʟᴏɴɢ Tᴏ Aɴʏ Tᴇʟᴇɢʀᴀᴍ Aᴄᴄᴏᴜɴᴛ.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     try:
         phone_code_msg = None
         if not is_bot:
-            phone_code_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Tʜᴇ OTP Tʜᴀᴛ Yᴏᴜ'ᴠᴇ Rᴇᴄᴇɪᴠᴇᴅ Fʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ Oɴ Yᴏᴜʀ Aᴄᴄᴏᴜɴᴛ.\nIғ OTP Is `12345`, **Pʟᴇᴀsᴇ Sᴇɴᴅ Iᴛ As** `1 2 3 4 5`.__**", filters=filters.text, timeout=600)
+            phone_code_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Sᴇɴᴅ Tʜᴇ OTP Tʜᴀᴛ Yᴏᴜ'ᴠᴇ Rᴇᴄᴇɪᴠᴇᴅ Fʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ Oɴ Yᴏᴜʀ Aᴄᴄᴏᴜɴᴛ.\nIғ OTP Is__ `12345`, **__Pʟᴇᴀsᴇ Sᴇɴᴅ Iᴛ As__** `1 2 3 4 5`.**", filters=filters.text, timeout=600)
             if await cancelled(phone_code_msg):
                 return
     except TimeoutError:
-        await msg.reply("**__Tɪᴍᴇ Lɪᴍɪᴛ Rᴇᴀᴄʜᴇᴅ Oғ 10 Mɪɴᴜᴛᴇs.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Tɪᴍᴇ Lɪᴍɪᴛ Rᴇᴀᴄʜᴇᴅ Oғ 10 Mɪɴᴜᴛᴇs.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
         return
     if not is_bot:
         phone_code = phone_code_msg.text.replace(" ", "")
@@ -134,16 +134,16 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             else:
                 await client.sign_in(phone_number, code.phone_code_hash, phone_code)
         except (PhoneCodeInvalid, PhoneCodeInvalidError):
-            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is WRONG\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is Wrong\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError):
-            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is EXPIRED\n\nᴩʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is Expired\n\nᴩʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (SessionPasswordNeeded, SessionPasswordNeededError):
             try:
-                two_step_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Eɴᴛᴇʀ Yᴏᴜʀ TWO STEP VERIFICSTION Pᴀssᴡᴏʀᴅ Tᴏ Cᴏɴᴛɪɴᴜᴇ.__**", filters=filters.text, timeout=300)
+                two_step_msg = await bot.ask(user_id, "**__Pʟᴇᴀsᴇ Eɴᴛᴇʀ Yᴏᴜʀ Two Steps Verification Pᴀssᴡᴏʀᴅ Tᴏ Cᴏɴᴛɪɴᴜᴇ__**", filters=filters.text, timeout=300)
             except TimeoutError:
-                await msg.reply("**__Tɪᴍᴇ Lɪᴍɪᴛ Rᴇᴀᴄʜᴇᴅ Oғ 05 Mɪɴᴜᴛᴇs.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", reply_markup=InlineKeyboardMarkup(gen_button))
+                await msg.reply("**__Tɪᴍᴇ Lɪᴍɪᴛ Rᴇᴀᴄʜᴇᴅ Oғ 05 Mɪɴᴜᴛᴇs.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", reply_markup=InlineKeyboardMarkup(gen_button))
                 return
             try:
                 password = two_step_msg.text
@@ -154,7 +154,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
                 if await cancelled(api_id_msg):
                     return
             except (PasswordHashInvalid, PasswordHashInvalidError):
-                await two_step_msg.reply("**__Tʜᴇ Pᴀssᴡᴏʀᴅ Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is Wʀᴏɴɢ.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ.__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+                await two_step_msg.reply("**__Tʜᴇ Pᴀssᴡᴏʀᴅ Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is Wʀᴏɴɢ.\n\nPʟᴇᴀsᴇ Sᴛᴀʀᴛ Gᴇɴᴇʀᴀᴛɪɴɢ Yᴏᴜʀ Sᴇssɪᴏɴ Aɢᴀɪɴ__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
                 return
     else:
         if telethon:
@@ -165,7 +165,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**𝐓𝐡𝐢𝐬 𝐈𝐬 𝐘𝐨𝐮𝐫 {ty} 𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧** \n\n`{string_session}` \n\n**𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 :- @VJ_Botz\n⚡ **𝐍𝐎𝐓𝐄 :** 𝐃𝐨𝐧𝐭 𝐒𝐡𝐚𝐫𝐞 𝐖𝐢𝐭𝐡 𝐀𝐧𝐲𝐨𝐧𝐞 𝐁𝐞𝐜𝐚𝐮𝐬𝐞 𝐇𝐞 𝐂𝐚𝐧 𝐇𝐚𝐜𝐤 𝐘𝐨𝐮𝐫 𝐀𝐥𝐥 𝐃𝐚𝐭𝐚. 🙂 𝐀𝐧𝐝 𝐃𝐨𝐧𝐭 𝐅𝐨𝐫𝐠𝐞𝐭 𝐓𝐨 𝐉𝐨𝐢𝐧 <b>@VJ_Botz & @VJ_Bot_Disscussion</b> 🥺"
+    text = f"**__Tʜɪs Is Yᴏᴜʀ {ty} Sᴛʀɪɴɢ Sᴇssɪᴏɴ__** \n\n`{string_session}` \n\n**𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐞𝐝 𝐁𝐲 :- @VJ_Botz\n⚡ **𝐍𝐎𝐓𝐄 :** 𝐃𝐨𝐧𝐭 𝐒𝐡𝐚𝐫𝐞 𝐖𝐢𝐭𝐡 𝐀𝐧𝐲𝐨𝐧𝐞 𝐁𝐞𝐜𝐚𝐮𝐬𝐞 𝐇𝐞 𝐂𝐚𝐧 𝐇𝐚𝐜𝐤 𝐘𝐨𝐮𝐫 𝐀𝐥𝐥 𝐃𝐚𝐭𝐚. 🙂 𝐀𝐧𝐝 𝐃𝐨𝐧𝐭 𝐅𝐨𝐫𝐠𝐞𝐭 𝐓𝐨 𝐉𝐨𝐢𝐧 <b>@VJ_Botz & @VJ_Bot_Disscussion</b> 🥺"
     try:
         if not is_bot:
             await client.send_message("me", text)

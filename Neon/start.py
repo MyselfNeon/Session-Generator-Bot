@@ -36,13 +36,12 @@ async def start(bot: Client, msg: Message):
                 return 
             key = InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("📢 Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url=invite_link.invite_link),
+                    InlineKeyboardButton("📢 Uᴘᴅᴀᴛᴇs", url=invite_link.invite_link),
                     InlineKeyboardButton("♻️ Tʀʏ Aɢᴀɪɴ", callback_data="chk")
                 ]]
             ) 
             await msg.reply_text(
-                "**⚠️Access Denied!⚠️\n\nPlease Join My Update Channel To Use Me."
-                "If You Joined The Channel Then Click On Check Again Button To Confirm.**",
+                "<i><b><blockquote>🚫 𝐀𝐂𝐂𝐄𝐒𝐒 𝐃𝐄𝐍𝐈𝐄𝐃</blockquote>\n\nJᴏɪɴ Mʏ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ Tᴏ Usᴇ Mᴇ Oɴᴄᴇ Yᴏᴜ’ᴠᴇ Jᴏɪɴᴇᴅ, Cʟɪᴄᴋ Tʜᴇ “Tʀʏ Aɢᴀɪɴ” Bᴜᴛᴛᴏɴ Tᴏ Cᴏɴғɪʀᴍ Yᴏᴜʀ Sᴜʙsᴄʀɪᴘᴛɪᴏɴ Aɴᴅ Gᴀɪɴ Aᴄᴄᴇss.\n\nTʜᴀɴᴋ Yᴏᴜ Fᴏʀ Sᴛᴀʏɪɴɢ Uᴘᴅᴀᴛᴇᴅ !!</b></i>",
                 reply_markup=key
             )
             return 
@@ -50,12 +49,12 @@ async def start(bot: Client, msg: Message):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
-        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 𝟷𝟶𝟶% Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
+        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/VJ_Bot_Disscussion"),
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/+o1s-8MppL2syYTI9"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
                 ]
             ]
@@ -75,12 +74,12 @@ async def chk(bot : Client, cb : CallbackQuery):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=cb.from_user.id,
-        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 𝟷𝟶𝟶% Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
+        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ", callback_data="generate")],
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/VJ_Bot_Disscussion"),
+                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/+o1s-8MppL2syYTI9"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
                 ]
             ]
