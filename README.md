@@ -15,6 +15,18 @@
 - `/generate` - generate a string session 
 - `/broadcast` - broadcast a message to all bot users (owner only)</b>
 
+<details><summary><b>Variables</summary></b></summary>
+
+* [`API_ID`] - _**From  <a href='https://my.telegram.org/'>Telegram Auth**_</a>
+* [`API_HASH`] - _**From <a href='https://my.telegram.org/'>Telegram Auth**_</a>
+* [`BOT_TOKEN`] - _**From <a href='https://t.me/botfather'>BotFather**_</a>
+* [`ADMINS`] - **_Username or ID of Admin. `Separate multiple IDs by space`_**
+* [`DB_URL`] - _**Your<a href='https://cloud.mongodb.com/'> MongoDB Url**_</a>
+* [`DB_NAME`] - _**Your <a href='https://cloud.mongodb.com/'>MongoDB database Name**_</a> _`Optional`_
+* [`LOG_CHANNEL`] - _**Bot Log Channel. Id startswith -100**_
+* [`CHANNELS`] - _**This Is File Channel, Username or ID of channel or group.`Separate multiple IDs by space`**_
+</details>
+
 ###  Variables
 
 - <b>`API_ID` - Get your Api Id from [my.telegram.org](https://my.telegram.org/apps)
