@@ -1,3 +1,4 @@
+#Start.py
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from config import OWNER_ID, F_SUB
@@ -86,3 +87,8 @@ async def chk(bot: Client, cb: CallbackQuery):
         )
     )
     await cb.answer()
+
+
+# Dont remove Credits
+# Developer Telegram @MyselfNeon
+# Update channel - @NeonFiles
