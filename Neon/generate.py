@@ -22,7 +22,7 @@ from telethon.errors import (
     PasswordHashInvalidError
 )
 
-ask_ques = "**__Cʜᴏᴏsᴇ Tʜᴇ Sᴛʀɪɴɢ Wʜɪᴄʜ Yᴏᴜ Wᴀɴᴛ Tᴏ Gᴇɴᴇʀᴀᴛᴇ Fʀᴏᴍ Bᴇʟᴏᴡ 👇__**"
+ask_ques = "**__Choose The String Which You Want to Generate from Below__  ⬇️**"
 buttons_ques = [
     [
         InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ 🤖", callback_data="telethon"),
@@ -179,15 +179,15 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
 
 async def cancelled(msg):
     if "/cancel" in msg.text:
-        await msg.reply("**__Cᴀɴᴄᴇʟʟᴇᴅ Tʜᴇ Oɴɢᴏɪɴɢ Sᴛʀɪɴɢ Gᴇɴᴇʀᴀᴛɪᴏɴ Pʀᴏᴄᴇss__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Cancelled The Ongoing String Generation 🥲__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/restart" in msg.text:
-        await msg.reply("**__Sᴜᴄᴄᴇssғᴜʟʟʏ Rᴇsᴛᴀʀᴛᴇᴅ Tʜɪs Bᴏᴛ Fᴏʀ Yᴏᴜ__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+        await msg.reply("**__Successfully Restarted the Bot__**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
         return True
     elif "/skip" in msg.text:
         return False
     elif msg.text.startswith("/"):  # Bot Commands
-        await msg.reply("**__Cᴀɴᴄᴇʟʟᴇᴅ Tʜᴇ Oɴɢᴏɪɴɢ Sᴛʀɪɴɢ Sᴇssɪᴏɴ Gᴇɴᴇʀᴀᴛɪɴɢ Pʀᴏᴄᴇss__**", quote=True)
+        await msg.reply("**__Cancelled The Ongoing String Session Generating Process__ ❌**", quote=True)
         return True
     else:
         return False
