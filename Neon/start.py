@@ -1,3 +1,4 @@
+import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from config import OWNER_ID, F_SUB
@@ -47,12 +48,12 @@ async def start(bot: Client, msg: Message):
             return 
 
     me = (await bot.get_me()).mention
-    await bot.send_message(
+    sent = await bot.send_message(
         chat_id=msg.chat.id,
         text=f"""<b><i>Hey {msg.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data=f"generate:{sent.id}")],
                 [
                     InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/+o1s-8MppL2syYTI9"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
@@ -60,6 +61,23 @@ async def start(bot: Client, msg: Message):
             ]
         )
     )
+
+
+@Client.on_callback_query(filters.regex("^generate"))
+async def handle_generate(bot: Client, cb: CallbackQuery):
+    # Extract message id from callback data
+    _, msg_id = cb.data.split(":")
+    msg_id = int(msg_id)
+
+    # wait 2 seconds then delete
+    await asyncio.sleep(2)
+    try:
+        await bot.delete_messages(cb.message.chat.id, msg_id)
+    except:
+        pass
+
+    await cb.answer("⚡ Generating Session...", show_alert=False)
+
 
 @Client.on_callback_query(filters.regex("chk"))
 async def chk(bot : Client, cb : CallbackQuery):
@@ -72,16 +90,16 @@ async def chk(bot : Client, cb : CallbackQuery):
         )
         return 
     me = (await bot.get_me()).mention
-    await bot.send_message(
+    sent = await bot.send_message(
         chat_id=cb.from_user.id,
-        text=f"""<b><i>Hey {msg.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
+        text=f"""<b><i>Hey {cb.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data=f"generate:{sent.id}")],
                 [
                     InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/+o1s-8MppL2syYTI9"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
                 ]
             ]
         )
-        )
+    )
