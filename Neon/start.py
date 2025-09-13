@@ -67,7 +67,7 @@ async def chk(bot : Client, cb : CallbackQuery):
         await bot.get_chat_member(int(F_SUB), cb.from_user.id)
     except:
         await cb.answer(
-            "You Have Joined My Updates Channel. Please Join It And Then Click Try Again 🆘",
+            "You Have Not Joined My Updates Channel. Please Join It And Then Click Try Again 🆘",
             show_alert=True
         )
         return 
