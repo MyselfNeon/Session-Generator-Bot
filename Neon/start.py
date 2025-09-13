@@ -49,7 +49,7 @@ async def start(bot: Client, msg: Message):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
-        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCʀᴇᴀᴛᴇᴅ Wɪᴛʜ 💖 Bʏ [@MʏsᴇʟғNᴇᴏɴ](https://t.me/myselfneon) !</i></b>""",
+        text=f"""<b><i>Hey {msg.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
@@ -74,7 +74,7 @@ async def chk(bot : Client, cb : CallbackQuery):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=cb.from_user.id,
-        text=f"""<b><i>Hᴇʏ {msg.from_user.mention}\n\nI Aᴍ {me}\nYᴏᴜʀ Uʟᴛɪᴍᴀᴛᴇ STRING GENERATOR !\n🔒 Sᴀғᴇ, Sᴇᴄᴜʀᴇ & Eʀʀᴏʀ-Fʀᴇᴇ\n🚀 Fᴀsᴛ, Rᴇʟɪᴀʙʟᴇ, ᴀɴᴅ Rᴇᴀᴅʏ ᴛᴏ Pᴏᴡᴇʀ Uᴘ Yᴏᴜʀ Sᴇssɪᴏɴs !\n\nCreated By @MyselfNeon 😎</i></b>""",
+        text=f"""<b><i>Hey {msg.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
