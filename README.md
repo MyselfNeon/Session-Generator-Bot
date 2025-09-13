@@ -20,21 +20,11 @@
 * [`API_ID`] - _**From  <a href='https://my.telegram.org/'>Telegram Auth**_</a>
 * [`API_HASH`] - _**From <a href='https://my.telegram.org/'>Telegram Auth**_</a>
 * [`BOT_TOKEN`] - _**From <a href='https://t.me/botfather'>BotFather**_</a>
-* [`ADMINS`] - **_Username or ID of Admin. `Separate multiple IDs by space`_**
-* [`DB_URL`] - _**Your<a href='https://cloud.mongodb.com/'> MongoDB Url**_</a>
-* [`DB_NAME`] - _**Your <a href='https://cloud.mongodb.com/'>MongoDB database Name**_</a> _`Optional`_
-* [`LOG_CHANNEL`] - _**Bot Log Channel. Id startswith -100**_
-* [`CHANNELS`] - _**This Is File Channel, Username or ID of channel or group.`Separate multiple IDs by space`**_
+* [`OWNER_ID`] - **_Username or ID of Admin._**
+* [`MONGO_DB_URI`] - _**Your<a href='https://cloud.mongodb.com/'> MongoDB Url**_</a>
+* [`F_SUB`] - _**Your Force Subscribe Channel Id & Make Bot Admin In This Channel**_ _`Optional`_
+* [`LOG_CHANNEL`] - _**Bot Log Channel. Id startswith -100**_ 
 </details>
-
-###  Variables
-
-- <b>`API_ID` - Get your Api Id from [my.telegram.org](https://my.telegram.org/apps)
-- `API_HASH` - Get your Api Hash from [my.telegram.org](https://my.telegram.org/apps)
-- `BOT_TOKEN` - Get your Bot Token from [@BotFather](https://t.me/BotFather)
-- `OWNER_ID` - Owner id of owner for broadcasting
-- `F_SUB` - Optional, Your Force Subscribe Channel Id & Make Bot Admin Here In This Channel 
-- `MONGO_DB_URI` - Get mongodb database uri from [MongoDB](https://mongodb.com) Watch [Video Tutorial](https://youtu.be/DAHRmFdw99o)</b>
 
 ## Credits
 
