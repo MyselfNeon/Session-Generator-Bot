@@ -37,8 +37,8 @@ async def start(bot: Client, msg: Message):
                 return 
             key = InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("📢 Uᴘᴅᴀᴛᴇs", url=invite_link.invite_link),
-                    InlineKeyboardButton("♻️ Tʀʏ Aɢᴀɪɴ", callback_data="chk")
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇs 🛜", url=invite_link.invite_link),
+                    InlineKeyboardButton("Tʀʏ Aɢᴀɪɴ ♻️", callback_data="chk")
                 ]]
             ) 
             await msg.reply_text(
@@ -55,8 +55,8 @@ async def start(bot: Client, msg: Message):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/+o1s-8MppL2syYTI9"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", url="https://myselfneon.github.io/Neon/"),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
                 ]
             ]
         )
