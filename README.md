@@ -1,15 +1,28 @@
-## String Session Generator Bot 
- 
-### Features 
+<h2 align="center">
+    <i>NeonFilter-Bot</i>
+</h2>
 
-- <b>Generate Pyrogram Session
+<img src="https://files.catbox.moe/tc8drk.jpg" alt="logo" target="/blank">
+
+_**Watch on Telegram as [ZeroFilter-Bot](https://t.me/zerofilterbot)**_
+
+![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=ZERO+FILTER+BOT+!!;CREATED+BY+MYSELFNEON+⚡;CODED+WITH+ADVANCED+FEATURES+📝&color=00FF00)
+<a href="https://github.com/MyselfNeon/NeonFilter-Bot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License- GPL 2.0 license -blueviolet?style=for-the-badge" alt="License" /> </a>
+<a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Written%20in-Python-skyblue?style=for-the-badge&logo=python" alt="Python" /> </a>
+<a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
+<a href="https://github.com/Myselfneon/NeonFilter-Bot"> <img src="https://img.shields.io/github/repo-size/myselfneon/NeonFilter-bot?color=skyblue&logo=github&logoColor=blue&style=for-the-badge" /></a>
+<a href="https://github.com/MyselfNeon/NeonFilter-Bot"> <img src="https://img.shields.io/github/last-commit/MyselfNeon/NeonFilter-Bot?color=black&logo=github&logoColor=black&style=for-the-badge" /></a> 
+ 
+### _Features_ ✨
+
+- <b><i>Generate Pyrogram Session
 - Generate Pyrogram Bot Session
 - Generate Telethon Session
 - Generate Telethon Bot Session
-- Can Add Force Subscribe Channel
-- Can Broadcast Message To Users</b>
+- Add Force Subscribe Channel
+- Broadcast Message To Users</i></b>
 
-### _Commands_
+### _Commands_ 🗣️
 
 ```
 start - Check if Bot is Alive
