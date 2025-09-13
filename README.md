@@ -1,10 +1,10 @@
 <h2 align="center">
-    <i>NeonFilter-Bot</i>
+    <i>-Bot</i>
 </h2>
 
 <img src="https://files.catbox.moe/tc8drk.jpg" alt="logo" target="/blank">
 
-_**Watch on Telegram as [ZeroFilter-Bot](https://t.me/zerofilterbot)**_
+_**Watch on Telegram as [NeonSessionBot](https://t.me/neonsessionbot)**_
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=ZERO+FILTER+BOT+!!;CREATED+BY+MYSELFNEON+⚡;CODED+WITH+ADVANCED+FEATURES+📝&color=00FF00)
 <a href="https://github.com/MyselfNeon/NeonFilter-Bot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License- GPL 2.0 license -blueviolet?style=for-the-badge" alt="License" /> </a>
@@ -96,9 +96,6 @@ python3 bot.py
 [![Contact Developer](https://img.shields.io/badge/Contact-Developer-blue?logo=telegram)](https://t.me/MyselfNeon)    
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Main%20Channel-blue?logo=telegram)](https://t.me/neonfiles)  
 Join My <a href='https://t.me/neonfiles'>Update Channel</a> For More Update Regarding Repo.
-
-<h3>Page Visits Counter 📈</h3>
-<a href="https://github.com/MyselfNeon/NeonFilter-Bot"><img alt="Cute Count" src="https://count.getloli.com/get/@NeonFilter-Bot?theme=rule34" /></a>
 
 ### _Note_ 📝
  
