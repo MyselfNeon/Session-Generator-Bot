@@ -41,7 +41,7 @@ async def start(bot: Client, msg: Message):
                 ]]
             ) 
             await msg.reply_text(
-                "<i><b><blockquote>🚫 𝐀𝐂𝐂𝐄𝐒𝐒 𝐃𝐄𝐍𝐈𝐄𝐃</blockquote>\n\nJoin My Update Channel To Use Me Once You’ve Joined, Click The Try Again Button To Confirm Your Subscription And Gain Access.\n\nThank You For Staying Updated !!</b></i>",
+                "<i><b><blockquote>🚫 𝐀𝐂𝐂𝐄𝐒𝐒 𝐃𝐄𝐍𝐈𝐄𝐃 🚫</blockquote>\n<blockquote>‣ Join My Update Channel To Use Me Once You’ve Joined, Click The Try Again Button To Confirm Your Subscription And Gain Access.\n\nThank You For Staying Updated !!</blockquote></b></i>",
                 reply_markup=key
             )
             return 
@@ -49,7 +49,7 @@ async def start(bot: Client, msg: Message):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
-        text=f"""<b><i>Hey {msg.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\n<blockquote>Created By @MyselfNeon 😎</blockquote></i></b>""",
+        text=f"""<b><i><blockquote>‣ Hey {msg.from_user.mention}</blockquote>\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\n<blockquote>Created By @MyselfNeon 😎</blockquote></i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
@@ -74,7 +74,7 @@ async def chk(bot: Client, cb: CallbackQuery):
 
     me = (await bot.get_me()).mention
     await cb.message.edit_text(
-        f"""<b><i>Hey {cb.from_user.mention}\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\n<blockquote>Created By @MyselfNeon 😎</blockquote></i></b>""",
+        f"""<b><i><blockquote>‣ Hey {cb.from_user.mention}</blockquote>\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\n<blockquote>Created By @MyselfNeon 😎</blockquote></i></b>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
