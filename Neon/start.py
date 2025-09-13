@@ -18,7 +18,7 @@ ABOUT_TEXT = """‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒
 • Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟹
 • DᴀᴛᴀBᴀsᴇ : Mᴏɴɢᴏ DB
 • Bᴏᴛ Sᴇʀᴠᴇʀ : Hᴇʀᴏᴋᴜ
-• Bᴜɪᴌᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽.𝟷 [Sᴛᴀʙʟᴇ]
+• Bᴜɪʟᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽.𝟷 [Sᴛᴀʙʟᴇ]
 """
 
 # Start Command
@@ -63,13 +63,25 @@ async def start(bot: Client, msg: Message):
     me = (await bot.get_me()).mention
     await msg.reply_text(
         START_TEXT.format(user=msg.from_user.mention, bot=me),
+        reply_markup=start_buttons()
+    )
+
+# Generate Page (Page 2 inside same message)
+@Client.on_callback_query(filters.regex("generate"))
+async def generate_page(bot: Client, cb: CallbackQuery):
+    await cb.message.edit_text(
+        "**__Cʜᴏᴏsᴇ Tʜᴇ Sᴛʀɪɴɢ Yᴏᴜ Wᴀɴᴛ Tᴏ Gᴇɴᴇʀᴀᴛᴇ 👇__**",
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("📝 About", callback_data="about"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
-                ]
+                    InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
+                    InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ", callback_data="pyrogram")
+                ],
+                [
+                    InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ Bᴏᴛ", callback_data="telethon_bot"),
+                    InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ Bᴏᴛ", callback_data="pyrogram_bot")
+                ],
+                [InlineKeyboardButton("🏠 Hᴏᴍᴇ", callback_data="home")]
             ]
         )
     )
@@ -86,19 +98,10 @@ async def chk(bot: Client, cb: CallbackQuery):
         )
         return
 
-    # Edit the message to the start message after successful join
     me = (await bot.get_me()).mention
     await cb.message.edit_text(
         START_TEXT.format(user=cb.from_user.mention, bot=me),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
-                [
-                    InlineKeyboardButton("📝 About", callback_data="about"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
-                ]
-            ]
-        )
+        reply_markup=start_buttons()
     )
     await cb.answer("Access Granted ✅", show_alert=True)
 
@@ -125,15 +128,7 @@ async def go_home(bot: Client, cb: CallbackQuery):
     me = (await bot.get_me()).mention
     await cb.message.edit_text(
         START_TEXT.format(user=cb.from_user.mention, bot=me),
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
-                [
-                    InlineKeyboardButton("📝 About", callback_data="about"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
-                ]
-            ]
-        )
+        reply_markup=start_buttons()
     )
 
 # Close Callback
@@ -141,3 +136,15 @@ async def go_home(bot: Client, cb: CallbackQuery):
 async def close_message(bot: Client, cb: CallbackQuery):
     await cb.message.delete()
     await cb.answer("Closed ✅", show_alert=False)
+
+# Utility: start buttons
+def start_buttons():
+    return InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
+            [
+                InlineKeyboardButton("📝 About", callback_data="about"),
+                InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
+            ]
+        ]
+    )
