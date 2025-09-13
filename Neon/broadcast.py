@@ -1,3 +1,4 @@
+#Broadcast.py
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
 from Neon.db import db
 from pyrogram import Client, filters
@@ -31,7 +32,7 @@ async def verupikkals(bot, message):
     users = await db.get_all_users()
     b_msg = message.reply_to_message
     if not b_msg:
-        return await message.reply_text("**__Rᴇᴘʟʏ Tʜɪs Cᴏᴍᴍᴀɴᴅ Tᴏ Yᴏᴜʀ Bʀᴏᴀᴅᴄᴀsᴛ Mᴇssᴀɢᴇ__**")
+        return await message.reply_text("**__Reply This Command To Your Broadcast Msg__**")
     sts = await message.reply_text(
         text='**📢 __Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Yᴏᴜʀ Mᴇssᴀɢᴇs__**'
     )
@@ -67,3 +68,8 @@ async def verupikkals(bot, message):
     
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
     await sts.edit(f"**📢 __--Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ--__**:\n\n**⏰ __Cᴏᴍᴘʟᴇᴛᴇᴅ Iɴ {time_taken} Sᴇᴄᴏɴᴅs__**.\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
+
+
+# Dont remove Credits
+# Developer Telegram @MyselfNeon
+# Update channel - @NeonFiles
