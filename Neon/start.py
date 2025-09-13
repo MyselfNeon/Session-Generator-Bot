@@ -41,7 +41,7 @@ async def start(bot: Client, msg: Message):
                 ]]
             ) 
             await msg.reply_text(
-                "<i><b><blockquote>🚫 𝐀𝐂𝐂𝐄𝐒𝐒 𝐃𝐄𝐍𝐈𝐄𝐃 🚫</blockquote>\n<blockquote>‣ Join My Update Channel To Use Me Once You’ve Joined, Click The Try Again Button To Confirm Your Subscription And Gain Access.\n\nThank You For Staying Updated !!</blockquote></b></i>",
+                "<b><blockquote>🚫 𝐀𝐂𝐂𝐄𝐒𝐒 𝐃𝐄𝐍𝐈𝐄𝐃 🚫</blockquote>\n<blockquote><i>Join My Update Channel To Use Me Once You’ve Joined, Click The Try Again Button To Confirm Your Subscription And Gain Access.\n\nThank You For Staying Updated !!</blockquote></b></i>",
                 reply_markup=key
             )
             return 
