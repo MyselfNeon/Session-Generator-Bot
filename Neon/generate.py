@@ -25,11 +25,11 @@ from telethon.errors import (
 ask_ques = "**__Cʜᴏᴏsᴇ Tʜᴇ Sᴛʀɪɴɢ Wʜɪᴄʜ Yᴏᴜ Wᴀɴᴛ Tᴏ Gᴇɴᴇʀᴀᴛᴇ Fʀᴏᴍ Bᴇʟᴏᴡ 👇__**"
 buttons_ques = [
     [
-        InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ", callback_data="telethon"),
-        InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ", callback_data="pyrogram")
+        InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ 🤖", callback_data="telethon"),
+        InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ 🐍", callback_data="pyrogram")
     ],[
-        InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ Bᴏᴛ", callback_data="pyrogram_bot"),
-        InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ Bᴏᴛ", callback_data="telethon_bot")
+        InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ Bᴏᴛ 🤖⚡", callback_data="telethon_bot"),
+        InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ Bᴏᴛ 🐍📡", callback_data="pyrogram_bot")
     ]
 ]
 
