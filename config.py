@@ -16,5 +16,8 @@ F_SUB = environ.get("F_SUB", "-1002384933640")
 # Mongodb Database Uri For User Data Store 
 MONGO_DB_URI = environ.get("MONGO_DB_URI", "")
 
+# Log channel ID for restart and new user logs
+LOG_CHANNEL = -1001889915480
+
 # Port To Run Web Application 
 PORT = int(environ.get('PORT', 8080))
