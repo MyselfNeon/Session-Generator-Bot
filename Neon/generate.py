@@ -28,8 +28,8 @@ buttons_ques = [
         InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ 🤖", callback_data="telethon"),
         InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ 🐍", callback_data="pyrogram")
     ],[
-        InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ Bᴏᴛ 🤖⚡", callback_data="telethon_bot"),
-        InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ Bᴏᴛ 🐍📡", callback_data="pyrogram_bot")
+        InlineKeyboardButton("Tᴇʟᴇᴛʜᴏɴ Bᴏᴛ", callback_data="telethon_bot"),
+        InlineKeyboardButton("Pʏʀᴏɢʀᴀᴍ Bᴏᴛ", callback_data="pyrogram_bot")
     ]
 ]
 
