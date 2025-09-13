@@ -27,29 +27,29 @@ async def broadcast_messages(user_id, message):
         return False, "Error"
 
 
-@Client.on_message(filters.command("broadcast") & filters.user(OWNER_ID) & filters.reply)
+@Client.on_message(filters.command("broadcast") & filters.user(OWNER_ID))
 async def verupikkals(bot, message):
-    users = await db.get_all_users()
     b_msg = message.reply_to_message
     if not b_msg:
-        return await message.reply_text("**__Reply This Command To Your Broadcast Msg__**")
-    sts = await message.reply_text(
-        text='**📢 __Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Yᴏᴜʀ Mᴇssᴀɢᴇs__**'
-    )
+        return await message.reply_text("**📢 Reply This Command To Your Broadcast Msg**")
+
+    users = await db.get_all_users()
+    sts = await message.reply_text("**📢 __Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Yᴏᴜʀ Mᴇssᴀɢᴇs__**")
     start_time = time.time()
     total_users = await db.total_users_count()
+
     done = 0
+    success = 0
     blocked = 0
     deleted = 0
-    failed =0
+    failed = 0
 
-    success = 0
     async for user in users:
         if 'id' in user:
             pti, sh = await broadcast_messages(int(user['id']), b_msg)
             if pti:
                 success += 1
-            elif pti == False:
+            else:
                 if sh == "Blocked":
                     blocked += 1
                 elif sh == "Deleted":
@@ -57,17 +57,33 @@ async def verupikkals(bot, message):
                 elif sh == "Error":
                     failed += 1
             done += 1
-            if not done % 20:
-                await sts.edit(f"**📢 __--Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss--__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**🚫 __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")    
         else:
-            # Handle the case where 'id' key is missing in the user dictionary
             done += 1
             failed += 1
-            if not done % 20:
-                await sts.edit(f"**📢 __--Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss--__**:\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖__Sᴜᴄᴄᴇss__**: {success}\n**🚫 __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
-    
-    time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
-    await sts.edit(f"**📢 __--Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ--__**:\n\n**⏰ __Cᴏᴍᴘʟᴇᴛᴇᴅ Iɴ {time_taken} Sᴇᴄᴏɴᴅs__**.\n\n**👥 __Tᴏᴛᴀʟ Usᴇʀs__**: {total_users}\n**✅ __Cᴏᴍᴘʟᴇᴛᴇᴅ__**: {done} / {total_users}\n**💖 __Sᴜᴄᴄᴇss__**: {success}\n**❌ __Bʟᴏᴄᴋᴇᴅ__**: {blocked}\n**🗑️ __Dᴇʟᴇᴛᴇᴅ__**: {deleted}")
+
+        # Update progress every 10 users for smoother feedback
+        if done % 10 == 0 or done == total_users:
+            await sts.edit(
+                f"**📢 --Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss--**\n\n"
+                f"👥 Total Users: {total_users}\n"
+                f"✅ Completed: {done}/{total_users}\n"
+                f"💖 Success: {success}\n"
+                f"🚫 Blocked: {blocked}\n"
+                f"🗑️ Deleted: {deleted}\n"
+                f"❌ Failed: {failed}"
+            )
+
+    time_taken = datetime.timedelta(seconds=int(time.time() - start_time))
+    await sts.edit(
+        f"**📢 --Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ--**\n\n"
+        f"⏰ Completed in {time_taken}\n\n"
+        f"👥 Total Users: {total_users}\n"
+        f"✅ Completed: {done}/{total_users}\n"
+        f"💖 Success: {success}\n"
+        f"❌ Blocked: {blocked}\n"
+        f"🗑️ Deleted: {deleted}\n"
+        f"⚠️ Failed: {failed}"
+        )
 
 
 # Dont remove Credits
