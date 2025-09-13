@@ -79,8 +79,8 @@ async def chk(bot: Client, cb: CallbackQuery):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ", url="https://t.me/+o1s-8MppL2syYTI9"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ", url="https://t.me/NeonFiles")
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", url="https://myselfneon.github.io/neon/"),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
                 ]
             ]
         )
