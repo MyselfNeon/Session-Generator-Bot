@@ -31,7 +31,7 @@ async def broadcast_messages(user_id, message):
 async def verupikkals(bot, message):
     b_msg = message.reply_to_message
     if not b_msg:
-        return await message.reply_text("**📢 Reply This Command To Your Broadcast Msg**")
+        return await message.reply_text("**__Reply This Command To Your Msg you Needed to Broadcast__ ✅**")
 
     users = await db.get_all_users()
     sts = await message.reply_text("**📢 __Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Yᴏᴜʀ Mᴇssᴀɢᴇs__**")
@@ -64,25 +64,25 @@ async def verupikkals(bot, message):
         # Update progress every 10 users for smoother feedback
         if done % 10 == 0 or done == total_users:
             await sts.edit(
-                f"**📢 --Bʀᴏᴀᴅᴄᴀsᴛ Iɴ Pʀᴏɢʀᴇss--**\n\n"
-                f"👥 Total Users: {total_users}\n"
-                f"✅ Completed: {done}/{total_users}\n"
-                f"💖 Success: {success}\n"
-                f"🚫 Blocked: {blocked}\n"
-                f"🗑️ Deleted: {deleted}\n"
-                f"❌ Failed: {failed}"
+                f"**📢 --__Broadcast In Progress__--**\n\n"
+                f"**👥 __Total Users: {total_users}__**\n"
+                f"**✅ __Completed: {done}/{total_users}__**\n"
+                f"**💖 __Success: {success}__**\n"
+                f"**🚫 __Blocked: {blocked}__**\n"
+                f"**🗑️ __Deleted: {deleted}__**\n"
+                f"**❌ __Failed: {failed}__**"
             )
 
     time_taken = datetime.timedelta(seconds=int(time.time() - start_time))
     await sts.edit(
-        f"**📢 --Bʀᴏᴀᴅᴄᴀsᴛ Cᴏᴍᴘʟᴇᴛᴇᴅ--**\n\n"
-        f"⏰ Completed in {time_taken}\n\n"
-        f"👥 Total Users: {total_users}\n"
-        f"✅ Completed: {done}/{total_users}\n"
-        f"💖 Success: {success}\n"
-        f"❌ Blocked: {blocked}\n"
-        f"🗑️ Deleted: {deleted}\n"
-        f"⚠️ Failed: {failed}"
+        f"**📢 --__Broadcast Completed__--**\n\n"
+        f"**⏰ __Completed in {time_taken}__**\n\n"
+        f"**👥 __Total Users: {total_users}__**\n"
+        f"**✅ __Completed: {done}/{total_users}__**\n"
+        f"**💖 __Success: {success}__**\n"
+        f"**❌ __Blocked: {blocked}__**\n"
+        f"**🗑️ __Deleted: {deleted}__**\n"
+        f"**⚠️ __Failed: {failed}__**"
         )
 
 
