@@ -1,3 +1,4 @@
+#Main.py
 from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL
 import datetime
@@ -5,7 +6,7 @@ import datetime
 class Bot(Client):
     def __init__(self):
         super().__init__(
-            "vj string session bot",
+            "Neon String Session Bot",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
@@ -32,9 +33,9 @@ class Bot(Client):
         date = now.strftime("%d-%m-%Y")
         time = now.strftime("%H:%M:%S")
         text = (
-            f"<b>{me_name} Restarted ✅</b>\n\n"
-            f"- <b>Date:</b> <code>{date}</code>\n"
-            f"- <b>Time:</b> <code>{time}</code>"
+            f"<b><i>{me_name} Restarted ✅</b></i>\n\n"
+            f"<b>📆 <i>Dᴀᴛᴇ: {date}</b></i>\n"
+            f"<b>⏰ <i>Tɪᴍᴇ: {time}</b></i>"
         )
         try:
             await self.send_message(LOG_CHANNEL, text)
@@ -50,11 +51,11 @@ async def start_cmd(client, message):
     # Send new user log
     now = datetime.datetime.now()
     text = (
-        "<b>#NewUser 👤</b>\n"
-        f"- <b>Usᴇʀ ID:</b> <code>{user_id}</code>\n"
-        f"- <b>Usᴇʀ:</b> {user_name}\n"
-        f"- <b>Date:</b> <code>{now.strftime('%d-%m-%Y')}</code>\n"
-        f"- <b>Time:</b> <code>{now.strftime('%H:%M:%S')}</code>"
+        "<b>#NewUser</b>\n"
+        f"<b>🆔 <i>Usᴇʀ ID:</i></b> <code>{user_id}</code>\n"
+        f"<b>👤 <i>Usᴇʀ: {user_name}</i></b>\n"
+        f"<b>📆 <i>Dᴀᴛᴇ: {now.strftime('%d-%m-%Y')}</i></b>\n"
+        f"<b>⏰ <i>Tɪᴍᴇ: {now.strftime('%H:%M:%S')}</b></i>"
     )
     try:
         await client.send_message(LOG_CHANNEL, text)
