@@ -9,11 +9,13 @@
 - Can Add Force Subscribe Channel
 - Can Broadcast Message To Users</b>
 
-### Commands
+### _Commands_
 
-- <b>`/start` - check bot is alive or not
-- `/generate` - generate a string session 
-- `/broadcast` - broadcast a message to all bot users (owner only)</b>
+```
+start - Check if Bot is Alive
+generate - Generate a String Session
+broadcast - Broadcast a Message to all Bot Users (Owner Only)
+```
 
 ### _Config Variables_  ⚙️
 
