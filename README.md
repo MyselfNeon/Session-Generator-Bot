@@ -4,9 +4,9 @@
 
 <img src="https://files.catbox.moe/tc8drk.jpg" alt="logo" target="/blank">
 
-_**Watch on Telegram as [SessionBot](https://t.me/neonsessionbot)**_
+_**Watch on Telegram as [NeonSessionBot](https://t.me/neonsessionbot)**_
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=ZERO+FILTER+BOT+!!;CREATED+BY+MYSELFNEON+⚡&color=00FF00)
+![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=NEON+SESSION+BOT+!!;CREATED+BY+MYSELFNEON+⚡&color=00FF00)
 <a href="https://github.com/MyselfNeon/Session-Generator-Bot/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License- GPL 2.0 license -blueviolet?style=for-the-badge" alt="License" /> </a>
 <a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Written%20in-Python-skyblue?style=for-the-badge&logo=python" alt="Python" /> </a>
 <a href="https://pypi.org/project/Pyrogram/"> <img src="https://img.shields.io/pypi/v/pyrogram?color=white&label=pyrogram&logo=python&logoColor=blue&style=for-the-badge" /></a>
