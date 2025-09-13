@@ -5,7 +5,7 @@ from Neon.db import db
 
 # Replace with your actual custom links
 MY_CUSTOM_LINKS = {
-    "BotRepoLink": "https://github.com/MyselfNeon/YourBotRepo"
+    "Neon": "https://myselfneon.github.io/about/"
 }
 
 @Client.on_message(filters.private & filters.incoming & filters.command("start"))
@@ -16,10 +16,10 @@ async def start(bot: Client, msg: Message):
     if len(args) > 1:
         key = args[1]
         if key in MY_CUSTOM_LINKS:
-            await msg.reply_text(f"**__Hᴇʀᴇ's Yᴏᴜʀ Lɪɴᴋ__**:\n {MY_CUSTOM_LINKS[key]}")
+            await msg.reply_text(f"**__Here's Your Link__ 🖇️**:\n\n {MY_CUSTOM_LINKS[key]}")
             return
         else:
-            await msg.reply_text(f"You started me with: {key}")
+            await msg.reply_text(f"**__You started me with: {key}__**")
             return
 
     if not await db.is_user_exist(msg.from_user.id):
@@ -32,7 +32,7 @@ async def start(bot: Client, msg: Message):
             try:
                 invite_link = await bot.create_chat_invite_link(int(F_SUB))
             except:
-                await msg.reply("**__Mᴀᴋᴇ Sᴜʀᴇ I Aᴍ Aᴅᴍɪɴ Iɴ Yᴏᴜʀ Cʜᴀɴɴᴇʟ__**")
+                await msg.reply("**__Make Sure I'm Admin in Your Channel__**")
                 return 
             key = InlineKeyboardMarkup(
                 [[
