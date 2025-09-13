@@ -16,6 +16,7 @@ start - Check if Bot is Alive
 generate - Generate a String Session
 broadcast - Broadcast a Message to all Bot Users (Owner Only)
 ```
+<b><i>⪼ Copy all Commands and Paste it in <a href='https://t.me/botfather'>BotFather</a> to Apply Commands.
 
 ### _Config Variables_  ⚙️
 
