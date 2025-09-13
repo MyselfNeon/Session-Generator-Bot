@@ -1,3 +1,4 @@
+#Database
 import motor.motor_asyncio
 from config import MONGO_DB_URI
 
@@ -33,3 +34,8 @@ class Database:
         await self.col.delete_many({'id': int(user_id)})
 
 db = Database(MONGO_DB_URI, "MyselfNeon")
+
+
+# Dont remove Credits
+# Developer Telegram @MyselfNeon
+# Update channel - @NeonFiles
