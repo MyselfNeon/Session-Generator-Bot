@@ -135,7 +135,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
             else:
                 await client.sign_in(phone_number, code.phone_code_hash, phone_code)
         except (PhoneCodeInvalid, PhoneCodeInvalidError):
-            await msg.reply("**__Tʜᴇ OTP Yᴏᴜ'ᴠᴇ Sᴇɴᴛ Is --Wʀᴏɴɢ--\n\nPlease Start Generating Your Session Again__**", reply_markup=InlineKeyboardMarkup(gen_button))
+            await msg.reply("**__The OTP You've Sent Is --Wʀᴏɴɢ--\n\nPlease Start Generating Your Session Again__**", reply_markup=InlineKeyboardMarkup(gen_button))
             return
         except (PhoneCodeExpired, PhoneCodeExpiredError):
             await msg.reply("**__The OTP You've Sent Is Expired.\n\nPlease Start Generating Your Session Again__**", reply_markup=InlineKeyboardMarkup(gen_button))
