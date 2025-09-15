@@ -10,7 +10,10 @@ MY_CUSTOM_LINKS = {
     "Neon": "https://myselfneon.github.io/about/"
 }
 
-REACTIONS = ["🔥", "😂", "❤️", "👍", "🤩", "✨", "🚀"]  # you can expand this list
+REACTIONS = [
+    "🤝", "😇", "🤗", "😍", "👍", "🎅", "😐", "🥰", "🤩",
+    "😱", "🤣", "😘", "👏", "😛", "😈", "🎉", "⚡️", "🫡",
+    "🤓", "😎", "🏆", "🔥", "🤭", "🌚", "🆒", "👻", "😁"]
 
 @Client.on_message(filters.private & filters.incoming & filters.command("start"))
 async def start(bot: Client, msg: Message):
@@ -97,3 +100,8 @@ async def chk(bot: Client, cb: CallbackQuery):
         )
     )
     await cb.answer()
+
+
+# Dont remove Credits
+# Developer Telegram @MyselfNeon
+# Update channel - @NeonFiles
