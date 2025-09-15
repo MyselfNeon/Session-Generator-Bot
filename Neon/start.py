@@ -3,14 +3,24 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from config import OWNER_ID, F_SUB
 from Neon.db import db
+import random
 
 # Replace with your actual custom links
 MY_CUSTOM_LINKS = {
     "Neon": "https://myselfneon.github.io/about/"
 }
 
+REACTIONS = ["🔥", "😂", "❤️", "👍", "🤩", "✨", "🚀"]  # you can expand this list
+
 @Client.on_message(filters.private & filters.incoming & filters.command("start"))
 async def start(bot: Client, msg: Message):
+    # --- Reaction feature added here ---
+    try:
+        await msg.react(emoji=random.choice(REACTIONS), big=True)
+    except Exception as e:
+        print(f"Reaction failed: {e}")
+    # -----------------------------------
+
     args = msg.text.split(maxsplit=1)
 
     # Handle deep-link parameter
@@ -87,8 +97,3 @@ async def chk(bot: Client, cb: CallbackQuery):
         )
     )
     await cb.answer()
-
-
-# Dont remove Credits
-# Developer Telegram @MyselfNeon
-# Update channel - @NeonFiles
