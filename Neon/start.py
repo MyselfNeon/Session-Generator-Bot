@@ -69,7 +69,7 @@ async def start(bot: Client, msg: Message):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", url="https://myselfneon.github.io/Neon/"),
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", url="https://myselfneon.github.io/neon/"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
                 ]
             ]
