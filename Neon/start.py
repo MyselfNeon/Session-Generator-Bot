@@ -7,7 +7,7 @@ import random
 
 # Replace with your actual custom links
 MY_CUSTOM_LINKS = {
-    "Neon": "https://myselfneon.github.io/about/"
+    "Neon": "https://myselfneon.github.io/neon/"
 }
 
 REACTIONS = [
