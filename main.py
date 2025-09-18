@@ -33,7 +33,7 @@ class Bot(Client):
         date = now.strftime("%d-%m-%Y")
         time = now.strftime("%H:%M:%S")
         text = (
-            f"<b><i>{me_name} Restarted ✅</b></i>\n"
+            f"<b><i>{me_name} is Up ✅</b></i>\n"
             f"<b>📅 <i>Dᴀᴛᴇ: {date}</b></i>\n"
             f"<b>⏰ <i>Tɪᴍᴇ: {time}</b></i>"
         )
