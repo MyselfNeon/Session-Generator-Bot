@@ -52,7 +52,7 @@ async def start_cmd(client, message):
     now = datetime.datetime.now()
     text = (
         "<b>#NewUser</b>\n"
-        f"<b>🌀 <i>@NeonSessionBot</i></b>\n"
+        f"<b>🌀 <i>@NeonSessionBot</i></b>\n\n"
         f"<b>🆔 <i>Usᴇʀ ID:</i></b> <code>{user_id}</code>\n"
         f"<b>👤 <i>Usᴇʀ: {user_name}</i></b>\n"
         f"<b>📆 <i>Dᴀᴛᴇ: {now.strftime('%d-%m-%Y')}</i></b>\n"
