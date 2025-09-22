@@ -64,7 +64,7 @@ async def start(bot: Client, msg: Message):
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
-        text=f"""<b><i><blockquote>‣ Hey {msg.from_user.mention}</blockquote>\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
+        text=f"""<b><i><blockquote>Yoo !! {msg.from_user.mention}</blockquote>\n\n<blockquote>🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b></blockquote>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
@@ -89,7 +89,7 @@ async def chk(bot: Client, cb: CallbackQuery):
 
     me = (await bot.get_me()).mention
     await cb.message.edit_text(
-        f"""<b><i><blockquote>‣ Hey {cb.from_user.mention}</blockquote>\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
+        f"""<b><i><blockquote>Yoo !! {cb.from_user.mention}</blockquote>\n\n<blockquote>🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b></blockquote>""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
