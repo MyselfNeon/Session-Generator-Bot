@@ -69,7 +69,7 @@ async def start(bot: Client, msg: Message):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", url="https://myselfneon.github.io/neon/"),
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", callback_data="about_btn"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
                 ]
             ]
@@ -94,7 +94,7 @@ async def chk(bot: Client, cb: CallbackQuery):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", url="https://myselfneon.github.io/neon/"),
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", callback_data="about_btn"),
                     InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
                 ]
             ]
@@ -102,7 +102,53 @@ async def chk(bot: Client, cb: CallbackQuery):
     )
     await cb.answer()
 
+# --- About page callback ---
+@Client.on_callback_query(filters.regex("about_btn"))
+async def about_page(bot: Client, cb: CallbackQuery):
+    about_text = """<b><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
+• Mʏ Nᴀᴍᴇ : Save Restrictions
+• Mʏ Bᴇsᴛ Fʀɪᴇɴᴅ : Tʜɪs Sᴡᴇᴇᴛɪᴇ ❤️
+• Dᴇᴠᴇʟᴏᴘᴇʀ : @MʏsᴇʟғNᴇᴏɴ
+• Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
+• Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟹
+• DᴀᴛᴀBᴀsᴇ : Mᴏɴɢᴏ DB
+• Bᴏᴛ Sᴇʀᴠᴇʀ : Hᴇʀᴏᴋᴜ
+• Bᴜɪʟᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽 [Sᴛᴀʙʟᴇ]</b>"""
 
-# Dont remove Credits
-# Developer Telegram @MyselfNeon
-# Update channel - @NeonFiles
+    about_buttons = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("Support", url="https://t.me/YourSupportChannel"),
+                InlineKeyboardButton("Source Code", url="https://github.com/MyselfNeon/SaveRestrictions-Bot")
+            ],
+            [
+                InlineKeyboardButton("Back", callback_data="back_to_start"),
+                InlineKeyboardButton("Close", callback_data="close")
+            ]
+        ]
+    )
+
+    await cb.message.edit_text(about_text, reply_markup=about_buttons)
+    await cb.answer()
+
+@Client.on_callback_query(filters.regex("back_to_start"))
+async def back_to_start(bot: Client, cb: CallbackQuery):
+    me = (await bot.get_me()).mention
+    await cb.message.edit_text(
+        f"""<b><i><blockquote>‣ Hey {cb.from_user.mention}</blockquote>\n\n🔑 I Am {me}\n🚀 Fast & Reliable Sessions\n🔒 Safe, Secure and Error-Free\n🧩 Your Ultimate STRING Generator !!\n\nCreated By @MyselfNeon 😎</i></b>""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
+                [
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", callback_data="about_btn"),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
+                ]
+            ]
+        )
+    )
+    await cb.answer()
+
+@Client.on_callback_query(filters.regex("close"))
+async def close_page(bot: Client, cb: CallbackQuery):
+    await cb.message.delete()
+    await cb.answer()
