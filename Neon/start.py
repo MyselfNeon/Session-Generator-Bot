@@ -94,8 +94,8 @@ async def chk(bot: Client, cb: CallbackQuery):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", callback_data="about_btn"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🔥", url="https://t.me/NeonFiles"),
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 😎", callback_data="about_btn")
                 ]
             ]
         )
@@ -105,7 +105,7 @@ async def chk(bot: Client, cb: CallbackQuery):
 # --- About page callback ---
 @Client.on_callback_query(filters.regex("about_btn"))
 async def about_page(bot: Client, cb: CallbackQuery):
-    about_text = """<b><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
+    about_text = """<b><i><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
 • Mʏ Nᴀᴍᴇ : Save Restrictions
 • Mʏ Bᴇsᴛ Fʀɪᴇɴᴅ : Tʜɪs Sᴡᴇᴇᴛɪᴇ ❤️
 • Dᴇᴠᴇʟᴏᴘᴇʀ : @MʏsᴇʟғNᴇᴏɴ
@@ -113,17 +113,17 @@ async def about_page(bot: Client, cb: CallbackQuery):
 • Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟹
 • DᴀᴛᴀBᴀsᴇ : Mᴏɴɢᴏ DB
 • Bᴏᴛ Sᴇʀᴠᴇʀ : Hᴇʀᴏᴋᴜ
-• Bᴜɪʟᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽 [Sᴛᴀʙʟᴇ]</b>"""
+• Bᴜɪʟᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽 [Sᴛᴀʙʟᴇ]</i></b>"""
 
     about_buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Support", url="https://t.me/YourSupportChannel"),
-                InlineKeyboardButton("Source Code", url="https://github.com/MyselfNeon/SaveRestrictions-Bot")
+                InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ 🔊", url="https://t.me/YourSupportChannel"),
+                InlineKeyboardButton("Sᴏᴜʀᴄᴇ Cᴏᴅᴇ 🚀", url="https://github.com/MyselfNeon/SaveRestrictions-Bot")
             ],
             [
-                InlineKeyboardButton("Back", callback_data="back_to_start"),
-                InlineKeyboardButton("Close", callback_data="close")
+                InlineKeyboardButton("⬅️ Bᴀᴄᴋ", callback_data="back_to_start"),
+                InlineKeyboardButton("Cʟᴏsᴇ ❌", callback_data="close")
             ]
         ]
     )
@@ -140,8 +140,8 @@ async def back_to_start(bot: Client, cb: CallbackQuery):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", callback_data="about_btn"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🔥", url="https://t.me/NeonFiles"),
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 😎", callback_data="about_btn")
                 ]
             ]
         )
