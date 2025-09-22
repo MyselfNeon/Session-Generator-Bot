@@ -105,15 +105,15 @@ async def chk(bot: Client, cb: CallbackQuery):
 # --- About page callback ---
 @Client.on_callback_query(filters.regex("about_btn"))
 async def about_page(bot: Client, cb: CallbackQuery):
-    about_text = """<b><i><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
-• Mʏ Nᴀᴍᴇ : Save Restrictions
-• Mʏ Bᴇsᴛ Fʀɪᴇɴᴅ : Tʜɪs Sᴡᴇᴇᴛɪᴇ ❤️
-• Dᴇᴠᴇʟᴏᴘᴇʀ : @MʏsᴇʟғNᴇᴏɴ
-• Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
-• Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ 𝟹
-• DᴀᴛᴀBᴀsᴇ : Mᴏɴɢᴏ DB
-• Bᴏᴛ Sᴇʀᴠᴇʀ : Hᴇʀᴏᴋᴜ
-• Bᴜɪʟᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽 [Sᴛᴀʙʟᴇ]</i></b>"""
+    about_text = """<b><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
+<i>• Mʏ Nᴀᴍᴇ : @NeonSessionBot
+• Mʏ Bᴇsᴛ Fʀɪᴇɴᴅ : <a href='tg://settings'>Tʜɪs Sᴡᴇᴇᴛɪᴇ ❤️</a> 
+• Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/MyselfNeon'>@MʏsᴇʟғNᴇᴏɴ</a> 
+• Lɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>Pʏʀᴏɢʀᴀᴍ</a> 
+• Lᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>Pʏᴛʜᴏɴ 𝟹</a> 
+• DᴀᴛᴀBᴀsᴇ : <a href='https://www.mongodb.com/'>Mᴏɴɢᴏ DB</a> 
+• Bᴏᴛ Sᴇʀᴠᴇʀ : <a href='https://heroku.com'>Hᴇʀᴏᴋᴜ</a> 
+• Bᴜɪʟᴅ Sᴛᴀᴛᴜs : ᴠ𝟸.𝟽.𝟷 [Sᴛᴀʙʟᴇ]</i></b>"""
 
     about_buttons = InlineKeyboardMarkup(
         [
