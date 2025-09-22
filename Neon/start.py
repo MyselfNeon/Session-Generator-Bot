@@ -51,7 +51,7 @@ async def start(bot: Client, msg: Message):
                 return 
             key = InlineKeyboardMarkup(
                 [[
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇs 🛜", url=invite_link.invite_link),
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇs 🔥", url=invite_link.invite_link),
                     InlineKeyboardButton("Tʀʏ Aɢᴀɪɴ ♻️", callback_data="chk")
                 ]]
             ) 
@@ -118,12 +118,12 @@ async def about_page(bot: Client, cb: CallbackQuery):
     about_buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ 🔊", url="https://t.me/YourSupportChannel"),
-                InlineKeyboardButton("Sᴏᴜʀᴄᴇ Cᴏᴅᴇ 🚀", url="https://github.com/MyselfNeon/SaveRestrictions-Bot")
+                InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ 🔊", url="https://t.me/+o1s-8MppL2syYTI9"),
+                InlineKeyboardButton("Sᴏᴜʀᴄᴇ Cᴏᴅᴇ 🚀", url="https://myselfneon.github.io/neon/")
             ],
             [
-                InlineKeyboardButton("⬅️ Bᴀᴄᴋ", callback_data="back_to_start"),
-                InlineKeyboardButton("Cʟᴏsᴇ ❌", callback_data="close")
+                InlineKeyboardButton("Cʟᴏsᴇ ❌", callback_data="close"),
+                InlineKeyboardButton("⬅️ Bᴀᴄᴋ", callback_data="back_to_start")
             ]
         ]
     )
