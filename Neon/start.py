@@ -69,8 +69,8 @@ async def start(bot: Client, msg: Message):
             [
                 [InlineKeyboardButton(text="⚡ Gᴇɴᴇʀᴀᴛᴇ Sᴛʀɪɴɢ Sᴇssɪᴏɴ ⚡", callback_data="generate")],
                 [
-                    InlineKeyboardButton("Aʙᴏᴜᴛ 🧩", callback_data="about_btn"),
-                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🛜", url="https://t.me/NeonFiles")
+                    InlineKeyboardButton("Uᴘᴅᴀᴛᴇ 🔥", url="https://t.me/NeonFiles"),
+                    InlineKeyboardButton("Aʙᴏᴜᴛ 😎", callback_data="about_btn")
                 ]
             ]
         )
