@@ -128,7 +128,11 @@ async def about_page(bot: Client, cb: CallbackQuery):
         ]
     )
 
-    await cb.message.edit_text(about_text, reply_markup=about_buttons)
+    await cb.message.edit_text(
+        about_text,
+        reply_markup=about_buttons,
+        disable_web_page_preview=True  # <-- web preview disabled
+    )
     await cb.answer()
 
 @Client.on_callback_query(filters.regex("back_to_start"))
