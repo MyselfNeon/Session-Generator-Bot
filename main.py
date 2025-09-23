@@ -35,9 +35,9 @@ class Bot(Client):
         time = now.strftime("%H:%M:%S")
         text = (
             f"<b>🤖 <i>Bot Deployed / Restarted ♻️</b></i>\n"
-            f"<i>- {self.username}</i>\n\n"   # <-- changed here
-            f"<b>- <i>Dᴀᴛᴇ:</b> {date}</i>\n"
-            f"<b>- <i>Tɪᴍᴇ:</b> {time}</i>"
+            f"<i><b>- {self.username}</i></b>\n\n"   # <-- changed here
+            f"<b>- <i>Dᴀᴛᴇ :</b> {date}</i>\n"
+            f"<b>- <i>Tɪᴍᴇ :</b> {time}</i>"
         )
         try:
             await self.send_message(LOG_CHANNEL, text)
@@ -55,10 +55,10 @@ async def start_cmd(client, message):
     text = (
         "<b>#NewUser</b>\n"
         f"<b><i>@NeonSessionBot</i></b>\n\n"
-        f"<b>🆔 <i>Usᴇʀ ID:</i></b> <code>{user_id}</code>\n"
-        f"<b>👤 <i>Usᴇʀ: {user_name}</i></b>\n"
-        f"<b>📆 <i>Dᴀᴛᴇ:</b> {now.strftime('%d-%m-%Y')}</i>\n"
-        f"<b>⏰ <i>Tɪᴍᴇ:</b> {now.strftime('%H:%M:%S')}</i>"
+        f"<b>🆔 <i>Usᴇʀ ID :</i></b> <code>{user_id}</code>\n"
+        f"<b>👤 <i>Usᴇʀ : {user_name}</i></b>\n"
+        f"<b>📆 <i>Dᴀᴛᴇ :</b> {now.strftime('%d-%m-%Y')}</i>\n"
+        f"<b>⏰ <i>Tɪᴍᴇ :</b> {now.strftime('%H:%M:%S')}</i>"
     )
     try:
         await client.send_message(LOG_CHANNEL, text)
