@@ -2,6 +2,10 @@
 from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL
 import datetime
+from datetime import timezone, timedelta  # ✅ Added for IST
+
+# ✅ Indian Standard Time
+IST = timezone(timedelta(hours=5, minutes=30))
 
 class Bot(Client):
     def __init__(self):
@@ -30,14 +34,14 @@ class Bot(Client):
         print('Bot Stopped Bye')
 
     async def send_restart_log(self):
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(IST)  # ✅ Using IST
         date = now.strftime("%d-%m-%Y")
         time = now.strftime("%H:%M:%S")
         text = (
             f"<b>🤖 <i>Bot Deployed / Restarted ♻️</b></i>\n"
-            f"<i><b>- {self.username}</i></b>\n\n"   # <-- changed here
+            f"<i><b>- {self.username}</i></b>\n\n"
             f"<b>- <i>Dᴀᴛᴇ :</b> {date}</i>\n"
-            f"<b>- <i>Tɪᴍᴇ :</b> {time}</i>"
+            f"<b>- <i>Tɪᴍᴇ :</b> {time}</i>\n"
             f"**- __@neonfiles__**"
         )
         try:
@@ -52,7 +56,7 @@ async def start_cmd(client, message):
     user_name = message.from_user.mention
 
     # Send new user log
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(IST)  # ✅ Using IST
     text = (
         "<b>#NewUser</b>\n"
         f"<b><i>@NeonSessionBot</i></b>\n\n"
