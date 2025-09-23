@@ -19,22 +19,22 @@ class Bot(Client):
     async def start(self):
         await super().start()
         me = await self.get_me()
-        self.username = '@' + me.username   # <-- store @username
+        self.username = '@' + me.username
         print('Bot Started Powered By @NeonFiles')
 
         # Send restart log
-        await self.send_restart_log(me.first_name)
+        await self.send_restart_log()
 
     async def stop(self, *args):
         await super().stop()
         print('Bot Stopped Bye')
 
-    async def send_restart_log(self, me_name):
+    async def send_restart_log(self):
         now = datetime.datetime.now()
         date = now.strftime("%d-%m-%Y")
         time = now.strftime("%H:%M:%S")
         text = (
-            f"<b><i>{me_name} ({self.username}) is Up ✅</b></i>\n"
+            f"<b><i>{self.username} is Up ✅</b></i>\n"   # <-- changed here
             f"<b>📅 <i>Dᴀᴛᴇ: {date}</b></i>\n"
             f"<b>⏰ <i>Tɪᴍᴇ: {time}</b></i>"
         )
@@ -53,7 +53,7 @@ async def start_cmd(client, message):
     now = datetime.datetime.now()
     text = (
         "<b>#NewUser</b>\n"
-        f"<b><i>{client.username}</i></b>\n\n"   # <-- using @Username dynamically
+        f"<b><i>@NeonSessionBot</i></b>\n\n"
         f"<b>🆔 <i>Usᴇʀ ID:</i></b> <code>{user_id}</code>\n"
         f"<b>👤 <i>Usᴇʀ: {user_name}</i></b>\n"
         f"<b>📆 <i>Dᴀᴛᴇ: {now.strftime('%d-%m-%Y')}</i></b>\n"
@@ -64,7 +64,7 @@ async def start_cmd(client, message):
     except Exception as e:
         print(f"New user log failed: {e}")
 
-    await message.reply(f"Hey! I’m {client.username} 🎉")
+    await message.reply("Hey! You started me 🎉")
 
 # Run the bot
 Bot().run()
