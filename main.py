@@ -35,8 +35,8 @@ class Bot(Client):
 
     async def send_restart_log(self):
         now = datetime.datetime.now(IST)  # ✅ Using IST
-        date = now.strftime("%d-%m-%Y")
-        time = now.strftime("%H:%M:%S")
+        date = now.strftime("%d-%b-%Y")
+        time = now.strftime("%I:%M %p")   # ✅ 12h format with AM/PM
         text = (
             f"<b>🤖 <i>Bot Deployed / Restarted ♻️</b></i>\n"
             f"<i><b>- {self.username}</i></b>\n\n"
@@ -62,8 +62,8 @@ async def start_cmd(client, message):
         f"<b><i>@NeonSessionBot</i></b>\n\n"
         f"<b>🆔 <i>Usᴇʀ ID :</i></b> <code>{user_id}</code>\n"
         f"<b>👤 <i>Usᴇʀ : {user_name}</i></b>\n"
-        f"<b>📆 <i>Dᴀᴛᴇ :</b> {now.strftime('%d-%m-%Y')}</i>\n"
-        f"<b>⏰ <i>Tɪᴍᴇ :</b> {now.strftime('%H:%M:%S')}</i>"
+        f"<b>📆 <i>Dᴀᴛᴇ :</b> {now.strftime('%d-%b-%Y')}</i>\n"
+        f"<b>⏰ <i>Tɪᴍᴇ :</b> {now.strftime('%I:%M %p')}</i>"
     )
     try:
         await client.send_message(LOG_CHANNEL, text)
