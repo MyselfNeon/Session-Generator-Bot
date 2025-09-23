@@ -106,7 +106,7 @@ async def chk(bot: Client, cb: CallbackQuery):
 @Client.on_callback_query(filters.regex("about_btn"))
 async def about_page(bot: Client, cb: CallbackQuery):
     about_text = """<b><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
-\n<i>• Mʏ Nᴀᴍᴇ : {me}
+\n<i>• Mʏ Nᴀᴍᴇ : @NeonSessionBot
 • Mʏ Bᴇsᴛ Fʀɪᴇɴᴅ : <a href='tg://settings'>Tʜɪs Sᴡᴇᴇᴛɪᴇ ❤️</a> 
 • Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/MyselfNeon'>@MʏsᴇʟғNᴇᴏɴ</a> 
 • Lɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>Pʏʀᴏɢʀᴀᴍ</a> 
