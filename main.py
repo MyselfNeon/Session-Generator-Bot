@@ -38,6 +38,7 @@ class Bot(Client):
             f"<i><b>- {self.username}</i></b>\n\n"   # <-- changed here
             f"<b>- <i>Dᴀᴛᴇ :</b> {date}</i>\n"
             f"<b>- <i>Tɪᴍᴇ :</b> {time}</i>"
+            f"**- __@neonfiles__**"
         )
         try:
             await self.send_message(LOG_CHANNEL, text)
