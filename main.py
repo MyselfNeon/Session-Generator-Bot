@@ -34,9 +34,10 @@ class Bot(Client):
         date = now.strftime("%d-%m-%Y")
         time = now.strftime("%H:%M:%S")
         text = (
-            f"<b><i>{self.username} is Up ✅</b></i>\n"   # <-- changed here
-            f"<b>📅 <i>Dᴀᴛᴇ: {date}</b></i>\n"
-            f"<b>⏰ <i>Tɪᴍᴇ: {time}</b></i>"
+            f"<b>🤖 Bot Deployed / Restarted ♻️</b></i>\n"
+            f"<i>- {self.username}</i>\n\n"   # <-- changed here
+            f"<b>- <i>Dᴀᴛᴇ: {date}</b></i>\n"
+            f"<b>- <i>Tɪᴍᴇ: {time}</b></i>"
         )
         try:
             await self.send_message(LOG_CHANNEL, text)
