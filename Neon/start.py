@@ -7,7 +7,7 @@ import random
 
 # Replace with your actual custom links
 MY_CUSTOM_LINKS = {
-    "Neon": "https://myselfneon.github.io/neon/"
+    "Neon": "Contact Owner & Details 🍀\n\nhttps://myselfneon.github.io/neon/"
 }
 
 REACTIONS = [
@@ -121,7 +121,7 @@ async def about_page(bot: Client, cb: CallbackQuery):
         [
             [
                 InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ 🔊", url="https://t.me/+o1s-8MppL2syYTI9"),
-                InlineKeyboardButton("Sᴏᴜʀᴄᴇ Cᴏᴅᴇ 🚀", url="https://myselfneon.github.io/neon/")
+                InlineKeyboardButton("Sᴏᴜʀᴄᴇ Cᴏᴅᴇ 🚀", url="https://t.me/NeonSessionBot?start=Neon")
             ],
             [
                 InlineKeyboardButton("Cʟᴏsᴇ ❌", callback_data="close"),
