@@ -1,9 +1,9 @@
-#Start.py
+import asyncio
+import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from config import OWNER_ID, F_SUB
 from Neon.db import db
-import random
 
 # Replace with your actual custom links
 MY_CUSTOM_LINKS = {
@@ -13,9 +13,12 @@ MY_CUSTOM_LINKS = {
 REACTIONS = [
     "🤝", "😇", "🤗", "😍", "👍", "🎅", "😐", "🥰", "🤩",
     "😱", "🤣", "😘", "👏", "😛", "😈", "🎉", "⚡️", "🫡",
-    "🤓", "😎", "🏆", "🔥", "🤭", "🌚", "🆒", "👻", "😁"]
+    "🤓", "😎", "🏆", "🔥", "🤭", "🌚", "🆒", "👻", "😁"
+]
 # Don't add unsupported emojis because Telegram reactions have limits
 
+
+# --- Main /start handler ---
 @Client.on_message(filters.private & filters.incoming & filters.command("start"))
 async def start(bot: Client, msg: Message):
     # --- Reaction feature added here ---
@@ -76,6 +79,21 @@ async def start(bot: Client, msg: Message):
         )
     )
 
+
+# --- Sticker reply for /start (auto-delete) ---
+@Client.on_message(filters.private & filters.incoming & filters.command("start"))
+async def start_sticker(bot: Client, msg: Message):
+    try:
+        m = await msg.reply_sticker(
+            "CAACAgIAAxkBAAIy12jS8TPJFHtoQh84Is8EsU4exixZAAKOFQACJU3BSY8WTX7r0TbzHgQ"  # replace with your sticker ID
+        )
+        await asyncio.sleep(2)  # wait 2 seconds
+        await m.delete()        # auto-delete sticker
+    except Exception as e:
+        print(f"Sticker reply failed: {e}")
+
+
+# --- Callback: Check subscription ---
 @Client.on_callback_query(filters.regex("chk"))
 async def chk(bot: Client, cb: CallbackQuery):
     try:
@@ -102,10 +120,11 @@ async def chk(bot: Client, cb: CallbackQuery):
     )
     await cb.answer()
 
+
 # --- About page callback ---
 @Client.on_callback_query(filters.regex("about_btn"))
 async def about_page(bot: Client, cb: CallbackQuery):
-    me = (await bot.get_me()).mention  # <-- added dynamic mention
+    me = (await bot.get_me()).mention  # <-- dynamic mention
 
     about_text = f"""<b><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
 <blockquote><i>• Mʏ Nᴀᴍᴇ : {me}
@@ -133,10 +152,12 @@ async def about_page(bot: Client, cb: CallbackQuery):
     await cb.message.edit_text(
         about_text,
         reply_markup=about_buttons,
-        disable_web_page_preview=True  # <-- web preview disabled
+        disable_web_page_preview=True
     )
     await cb.answer()
 
+
+# --- Back to start callback ---
 @Client.on_callback_query(filters.regex("back_to_start"))
 async def back_to_start(bot: Client, cb: CallbackQuery):
     me = (await bot.get_me()).mention
@@ -154,9 +175,9 @@ async def back_to_start(bot: Client, cb: CallbackQuery):
     )
     await cb.answer()
 
+
+# --- Close callback ---
 @Client.on_callback_query(filters.regex("close"))
 async def close_page(bot: Client, cb: CallbackQuery):
     await cb.message.delete()
     await cb.answer()
-
-
