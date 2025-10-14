@@ -31,7 +31,7 @@ async def broadcast_messages(user_id, message):
 async def verupikkals(bot, message):
     b_msg = message.reply_to_message
     if not b_msg:
-        return await message.reply_text("**__Reply This Command To Your Msg you Needed to Broadcast__ ✅**")
+        return await message.reply_text("**__Reply This Command To Your Msg you Needed to Broadcast__ ✅**",quote=True)
 
     users = await db.get_all_users()
     sts = await message.reply_text("**📢 __Bʀᴏᴀᴅᴄᴀsᴛɪɴɢ Yᴏᴜʀ Mᴇssᴀɢᴇs__**")
