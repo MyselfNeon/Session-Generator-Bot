@@ -1,8 +1,11 @@
-#Main.py
+# Main.py
 from pyrogram import Client, filters
-from config import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL
+from config import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, KEEP_ALIVE_URL
 import datetime
 from datetime import timezone, timedelta  # ✅ Added for IST
+import asyncio
+import aiohttp
+import logging
 
 # ✅ Indian Standard Time
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -26,6 +29,9 @@ class Bot(Client):
         self.username = '@' + me.username
         print('Bot Started Powered By @NeonFiles')
 
+        # ✅ Start keep-alive task
+        asyncio.create_task(keep_alive())
+
         # Send restart log
         await self.send_restart_log()
 
@@ -48,6 +54,18 @@ class Bot(Client):
             await self.send_message(LOG_CHANNEL, text)
         except Exception as e:
             print(f"Restart log failed: {e}")
+
+# ✅ Keep Alive Function
+async def keep_alive():
+    """Send a request every 100 seconds to keep the bot alive (if required)."""
+    async with aiohttp.ClientSession() as session:
+        while True:
+            try:
+                await session.get(KEEP_ALIVE_URL)
+                logging.info("Sent keep-alive request.")
+            except Exception as e:
+                logging.error(f"Keep-alive request failed: {e}")
+            await asyncio.sleep(100)
 
 # Handle /start and new user logging (no DB dependency)
 @Bot.on_message(filters.private & filters.command("start"))
