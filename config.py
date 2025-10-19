@@ -21,3 +21,6 @@ LOG_CHANNEL = -1001889915480
 
 # Port To Run Web Application 
 PORT = int(environ.get('PORT', 8080))
+
+# Keep-Alive URL
+KEEP_ALIVE_URL = environ.get("KEEP_ALIVE_URL", "https://session-generator-bot-iq7n.onrender.com/")  # <-- Add this line
