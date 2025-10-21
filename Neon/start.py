@@ -18,12 +18,12 @@ REACTIONS = [
 
 @Client.on_message(filters.private & filters.incoming & filters.command("start"))
 async def start(bot: Client, msg: Message):
-    # --- Reaction feature added here ---
+    # --- Reaction feature ---
     try:
         await msg.react(emoji=random.choice(REACTIONS), big=True)
     except Exception as e:
         print(f"Reaction failed: {e}")
-    # -----------------------------------
+    # ------------------------
 
     args = msg.text.split(maxsplit=1)
 
@@ -37,9 +37,15 @@ async def start(bot: Client, msg: Message):
             await msg.reply_text(f"**__You Started me with: {key}__**")
             return
 
+    # --- Add user to DB with username ---
     if not await db.is_user_exist(msg.from_user.id):
-        await db.add_user(msg.from_user.id, msg.from_user.first_name)
+        await db.add_user(
+            msg.from_user.id,
+            msg.from_user.first_name,
+            msg.from_user.username or "N/A"  # store username or "N/A"
+        )
 
+    # --- Force subscription check ---
     if F_SUB:
         try:
             await bot.get_chat_member(int(F_SUB), msg.from_user.id)
@@ -61,6 +67,7 @@ async def start(bot: Client, msg: Message):
             )
             return 
 
+    # --- Send welcome message ---
     me = (await bot.get_me()).mention
     await bot.send_message(
         chat_id=msg.chat.id,
