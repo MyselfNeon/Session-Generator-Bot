@@ -31,13 +31,15 @@ async def auto_register_user(client: Client, message: Message):
     register_user(message.from_user)
 
 # --- Command to check all users ---
-@Client.on_message(filters.private & filters.command("users"))
+@Client.on_message(filters.private & filters.command("users", prefixes="/"))
 async def users_handler(client: Client, message: Message):
+    """Send list of all users + JSON file."""
     users = get_all_users()
     total = len(users)
-    await message.reply_text(
-        f"List of all Users are Below -\n👥 Total Registered Users: {total}"
-    )
+    text = f"List of all Users are Below -\n👥 Total Registered Users: {total}"
+    await message.reply_text(text)
+    
+    # Send JSON file
     users_json = json.dumps(users, indent=2, ensure_ascii=False)
     await message.reply_document(
         document=bytes(users_json, "utf-8"),
