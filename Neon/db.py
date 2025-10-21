@@ -33,7 +33,7 @@ class Database:
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
 
-db = Database(MONGO_DB_URI, "MyselfNeon")
+db = Database(MONGO_DB_URI, "SessionsNeon")
 
 
 # Dont remove Credits
