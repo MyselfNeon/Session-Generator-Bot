@@ -97,13 +97,12 @@ async def verupikkals(bot, message):
         f"**⚠️ __Failed: {failed}__**"
     )
 
-
 # ─────────────────────────────
-# /users Command (Standalone + JSON export)
+# /users Command (Standalone + JSON export with username)
 # ─────────────────────────────
 @Client.on_message(filters.command("users") & filters.user(OWNER_ID))
 async def users_count(client: Client, message: Message):
-    """Shows total registered users and sends a JSON file of all users."""
+    """Shows total registered users and sends a JSON file of all users with usernames."""
     msg = await message.reply_text("⏳ Gathering user data...", quote=True)
 
     try:
@@ -117,7 +116,8 @@ async def users_count(client: Client, message: Message):
         async for user in users_cursor:
             users_list.append({
                 "id": user.get("id"),
-                "name": user.get("name", "None")
+                "name": user.get("name", "N/A"),
+                "username": user.get("username", "N/A")  # default N/A if no username
             })
 
         # 3) Write users to a temporary JSON file
