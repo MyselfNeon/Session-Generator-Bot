@@ -90,7 +90,7 @@ async def m3u8_to_mp4(url, workdir, filename=None, progress_cb=None, cancel_even
         if progress_cb: await progress_cb("done",1,1)
         return out_file
 
-@Client.on_message(filters.command("m3u8") & ~filters.edited)
+@Client.on_message(filters.command("m3u8"))
 async def cmd_m3u8(c:Client,m:Message):
     args = m.text.split(maxsplit=2)
     url=None; filename=None
@@ -126,7 +126,7 @@ async def cmd_m3u8(c:Client,m:Message):
         del ACTIVE_TASKS[task_id]
         shutil.rmtree(tempdir,ignore_errors=True)
 
-@Client.on_message(filters.command("cancel") & ~filters.edited)
+@Client.on_message(filters.command("cancel"))
 async def cancel_task(c:Client,m:Message):
     args = m.text.split(maxsplit=1)
     if len(args)!=2: await m.reply_text("Usage: /cancel <TaskID>"); return
