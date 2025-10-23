@@ -1,0 +1,35 @@
+#Callbacks.py
+import traceback
+from pyrogram import Client, filters
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
+from MyselfNeon.generate import generate_session, ask_ques, buttons_ques
+
+@Client.on_callback_query(filters.regex(pattern=r"^(generate|pyrogram|pyrogram_bot|telethon_bot|telethon)$"))
+async def _callbacks(bot: Client, callback_query: CallbackQuery):
+    query = callback_query.matches[0].group(1)
+    if query == "generate":
+        await callback_query.answer()
+        await callback_query.message.reply(ask_ques, reply_markup=InlineKeyboardMarkup(buttons_ques))
+    elif query.startswith("pyrogram") or query.startswith("telethon"):
+        try:
+            if query == "pyrogram":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message)
+            elif query == "pyrogram_bot":
+                await callback_query.answer("Tʜᴇ Sᴇssɪᴏɴ Gᴇɴᴇʀᴀᴛᴇᴅ Wɪʟʟ Bᴇ ᴏғ Pʏʀᴏɢʀᴀᴍ V2", show_alert=True)
+                await generate_session(bot, callback_query.message, is_bot=True)
+            elif query == "telethon_bot":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message, telethon=True, is_bot=True)
+            elif query == "telethon":
+                await callback_query.answer()
+                await generate_session(bot, callback_query.message, telethon=True)
+        except Exception as e:
+            print(traceback.format_exc())
+            print(e)
+            await callback_query.message.reply(f"**__Error -__** {e}")
+
+
+# Dont remove Credits
+# Developer Telegram @MyselfNeon
+# Update channel - @NeonFiles
