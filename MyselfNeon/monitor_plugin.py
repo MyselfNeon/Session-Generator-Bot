@@ -18,32 +18,35 @@ failure_counts = {}    # {url: consecutive_failures}
 running_tasks = {}     # {url: asyncio.Task}
 monitor_interval = DEFAULT_INTERVAL
 db = None
+_initialized = False  # Prevent re-initialization
 
 
 # ========================
-# INIT ON STARTUP
+# INIT FUNCTION
 # ========================
-@Client.on_startup()
 async def init_monitor(bot: Client):
-    """Initialize MongoDB and resume all monitors."""
-    global db
+    """Initialize DB and reload all monitors."""
+    global db, _initialized
+    if _initialized:
+        return  # avoid double init if plugins reload
+
     client = AsyncIOMotorClient(MONGO_DB_URI)
     db = client["neon_monitor"]
 
-    # Resume previous monitors
     async for doc in db.monitors.find():
         url = doc["url"]
         if url not in running_tasks:
             running_tasks[url] = asyncio.create_task(ping_url(bot, url))
 
-    logging.info(f"✅ Loaded {len(running_tasks)} active monitors.")
+    logging.info(f"✅ Loaded {len(running_tasks)} monitors from DB.")
+    _initialized = True
 
 
 # ========================
-# CORE PING FUNCTION
+# PING FUNCTION
 # ========================
 async def ping_url(bot: Client, url: str):
-    """Ping a URL repeatedly and alert when status changes."""
+    """Continuously ping a URL and send alerts."""
     global monitor_interval
     notify_ids = {BOSS_ID, OWNER_ID}
 
@@ -52,7 +55,6 @@ async def ping_url(bot: Client, url: str):
             try:
                 async with session.get(url, timeout=10) as resp:
                     if resp.status == 200:
-                        # Back online case
                         if status_cache.get(url) == "down":
                             for uid in notify_ids:
                                 await bot.send_message(
@@ -70,10 +72,9 @@ async def ping_url(bot: Client, url: str):
 
 
 async def handle_failure(bot, url, error, notify_ids):
-    """Handle URL failure and notify after repeated errors."""
+    """Handle repeated failures before alerting."""
     failure_counts[url] = failure_counts.get(url, 0) + 1
 
-    # Alert after 3 consecutive failures
     if failure_counts[url] == 3 and status_cache.get(url) != "down":
         status_cache[url] = "down"
         for uid in notify_ids:
@@ -86,11 +87,12 @@ async def handle_failure(bot, url, error, notify_ids):
 # ========================
 # COMMANDS
 # ========================
-
 @Client.on_message(filters.command("malive"))
 async def malive_cmd(bot, message):
     """Add a new URL to monitor."""
     global db
+    await init_monitor(bot)
+
     if len(message.command) < 2:
         return await message.reply("⚙️ Usage: `/malive <url>`", quote=True)
 
@@ -106,8 +108,10 @@ async def malive_cmd(bot, message):
 
 @Client.on_message(filters.command("msee"))
 async def msee_cmd(bot, message):
-    """List all monitored URLs."""
+    """See all saved monitor URLs."""
     global db
+    await init_monitor(bot)
+
     urls = [doc async for doc in db.monitors.find()]
     if not urls:
         return await message.reply("❌ No URLs are being monitored yet.")
@@ -119,7 +123,9 @@ async def msee_cmd(bot, message):
 
 @Client.on_message(filters.command("mstatus"))
 async def mstatus_cmd(bot, message):
-    """Show current monitor status."""
+    """Show runtime monitoring status."""
+    await init_monitor(bot)
+
     if not running_tasks:
         return await message.reply("❌ No running monitors.")
     msg = "🧠 **Monitor Status:**\n"
@@ -132,7 +138,7 @@ async def mstatus_cmd(bot, message):
 
 @Client.on_message(filters.command("mtime"))
 async def mtime_cmd(bot, message):
-    """Display and update monitor interval."""
+    """Show and set monitor interval."""
     global monitor_interval
     buttons = InlineKeyboardMarkup(
         [[InlineKeyboardButton("⏱ Change Time", callback_data="change_time")]]
@@ -152,7 +158,7 @@ async def change_time_cb(bot, query):
 
 @Client.on_message(filters.text & filters.private)
 async def time_setter(bot, message):
-    """Set monitor interval if numeric value is sent."""
+    """Set new monitor time if numeric value received."""
     global monitor_interval
     if message.text.isdigit():
         monitor_interval = int(message.text)
@@ -161,8 +167,10 @@ async def time_setter(bot, message):
 
 @Client.on_message(filters.command("mdel"))
 async def mdel_cmd(bot, message):
-    """List monitored URLs to delete."""
+    """Delete a monitored URL."""
     global db
+    await init_monitor(bot)
+
     urls = [doc async for doc in db.monitors.find()]
     if not urls:
         return await message.reply("❌ No URLs found to delete.")
@@ -177,8 +185,10 @@ async def mdel_cmd(bot, message):
 
 @Client.on_message(filters.regex(r"^\d+(,\d+)*$"))
 async def delete_selected(bot, message):
-    """Delete monitors based on user selection."""
+    """Process user’s delete selection."""
     global db
+    await init_monitor(bot)
+
     urls = [doc async for doc in db.monitors.find()]
     indexes = [int(i) - 1 for i in message.text.split(",") if i.isdigit()]
     deleted = []
