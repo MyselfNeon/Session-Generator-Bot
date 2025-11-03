@@ -156,7 +156,7 @@ async def change_time_cb(bot, query):
     )
 
 
-@Client.on_message(filters.text & filters.private)
+@Client.on_message(filters.private & filters.regex(r"^\d+$"))
 async def time_setter(bot, message):
     """Set new monitor time if numeric value received."""
     global monitor_interval
