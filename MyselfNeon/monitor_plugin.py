@@ -59,7 +59,8 @@ async def ping_url(bot: Client, url: str):
                             for uid in notify_ids:
                                 await bot.send_message(
                                     uid,
-                                    f"✅ [{url}] is **back online!** 🎉"
+                                    f"✅ <b>{url}</b> is <b>back online!</b> 🎉",
+                                    parse_mode="html"
                                 )
                         status_cache[url] = "up"
                         failure_counts[url] = 0
@@ -80,7 +81,8 @@ async def handle_failure(bot, url, error, notify_ids):
         for uid in notify_ids:
             await bot.send_message(
                 uid,
-                f"❌ [{url}] seems **DOWN!**\nError: `{error}`"
+                f"❌ <b>{url}</b> seems <b>DOWN!</b>\nError: <code>{error}</code>",
+                parse_mode="html"
             )
 
 
@@ -94,16 +96,26 @@ async def malive_cmd(bot, message):
     await init_monitor(bot)
 
     if len(message.command) < 2:
-        return await message.reply("⚙️ Usage: `/malive <url>`", quote=True)
+        return await message.reply(
+            "⚙️ Usage: <code>/malive &lt;url&gt;</code>",
+            quote=True,
+            parse_mode="html"
+        )
 
     url = message.text.split(maxsplit=1)[1].strip()
     existing = await db.monitors.find_one({"url": url})
     if existing:
-        return await message.reply("⚠️ This URL is already being monitored.")
+        return await message.reply(
+            "⚠️ This URL is already being monitored.",
+            parse_mode="html"
+        )
 
     await db.monitors.insert_one({"url": url})
     running_tasks[url] = asyncio.create_task(ping_url(bot, url))
-    await message.reply(f"✅ Now monitoring:\n`{url}`")
+    await message.reply(
+        f"✅ Now monitoring:\n<code>{url}</code>",
+        parse_mode="html"
+    )
 
 
 @Client.on_message(filters.command("msee"))
@@ -114,11 +126,11 @@ async def msee_cmd(bot, message):
 
     urls = [doc async for doc in db.monitors.find()]
     if not urls:
-        return await message.reply("❌ No URLs are being monitored yet.")
-    msg = "🔍 **Monitored URLs:**\n" + "\n".join(
-        [f"{i+1}. `{doc['url']}`" for i, doc in enumerate(urls)]
+        return await message.reply("❌ No URLs are being monitored yet.", parse_mode="html")
+    msg = "🔍 <b>Monitored URLs:</b>\n" + "\n".join(
+        [f"{i+1}. <code>{doc['url']}</code>" for i, doc in enumerate(urls)]
     )
-    await message.reply(msg)
+    await message.reply(msg, parse_mode="html")
 
 
 @Client.on_message(filters.command("mstatus"))
@@ -127,13 +139,13 @@ async def mstatus_cmd(bot, message):
     await init_monitor(bot)
 
     if not running_tasks:
-        return await message.reply("❌ No running monitors.")
-    msg = "🧠 **Monitor Status:**\n"
+        return await message.reply("❌ No running monitors.", parse_mode="html")
+    msg = "🧠 <b>Monitor Status:</b>\n"
     for i, url in enumerate(running_tasks.keys(), start=1):
         stat = status_cache.get(url, "checking")
         emoji = "✅" if stat == "up" else ("❌" if stat == "down" else "⚙️")
-        msg += f"{i}. {emoji} `{url}` - {stat.upper()}\n"
-    await message.reply(msg)
+        msg += f"{i}. {emoji} <code>{url}</code> - {stat.upper()}\n"
+    await message.reply(msg, parse_mode="html")
 
 
 @Client.on_message(filters.command("mtime"))
@@ -144,15 +156,17 @@ async def mtime_cmd(bot, message):
         [[InlineKeyboardButton("⏱ Change Time", callback_data="change_time")]]
     )
     await message.reply(
-        f"⏲ Current monitor interval: **{monitor_interval} sec**",
-        reply_markup=buttons
+        f"⏲ Current monitor interval: <b>{monitor_interval} sec</b>",
+        reply_markup=buttons,
+        parse_mode="html"
     )
 
 
 @Client.on_callback_query(filters.regex("change_time"))
 async def change_time_cb(bot, query):
     await query.message.reply(
-        "🕒 Send the new monitor interval in **seconds** (e.g., 600)"
+        "🕒 Send the new monitor interval in <b>seconds</b> (e.g., 600)",
+        parse_mode="html"
     )
 
 
@@ -162,7 +176,10 @@ async def time_setter(bot, message):
     global monitor_interval
     if message.text.isdigit():
         monitor_interval = int(message.text)
-        await message.reply(f"✅ Monitor interval updated to {monitor_interval} seconds.")
+        await message.reply(
+            f"✅ Monitor interval updated to <b>{monitor_interval}</b> seconds.",
+            parse_mode="html"
+        )
 
 
 @Client.on_message(filters.command("mdel"))
@@ -173,14 +190,14 @@ async def mdel_cmd(bot, message):
 
     urls = [doc async for doc in db.monitors.find()]
     if not urls:
-        return await message.reply("❌ No URLs found to delete.")
+        return await message.reply("❌ No URLs found to delete.", parse_mode="html")
 
-    msg = "🗑 **Select URL number(s) to delete:**\n"
+    msg = "🗑 <b>Select URL number(s) to delete:</b>\n"
     for i, doc in enumerate(urls, 1):
-        msg += f"{i}. `{doc['url']}`\n"
-    msg += "\nSend numbers separated by commas (e.g., `1,3`)"
+        msg += f"{i}. <code>{doc['url']}</code>\n"
+    msg += "\nSend numbers separated by commas (e.g., <code>1,3</code>)"
 
-    await message.reply(msg)
+    await message.reply(msg, parse_mode="html")
 
 
 @Client.on_message(filters.regex(r"^\d+(,\d+)*$"))
@@ -207,7 +224,8 @@ async def delete_selected(bot, message):
     if deleted:
         await message.reply(
             "🧹 Deleted and stopped monitoring:\n" +
-            "\n".join(f"• `{u}`" for u in deleted)
+            "\n".join(f"• <code>{u}</code>" for u in deleted),
+            parse_mode="html"
         )
     else:
-        await message.reply("⚠️ No valid URLs to delete.")
+        await message.reply("⚠️ No valid URLs to delete.", parse_mode="html")
