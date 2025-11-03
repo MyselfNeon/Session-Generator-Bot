@@ -1,14 +1,12 @@
-# main.py
 from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, KEEP_ALIVE_URL
-from MyselfNeon.keep_alive_plugin import init_keep_alive  # ✅ Import plugin
+from MyselfNeon.keep_alive_plugin import init_keep_alive
 import datetime
 from datetime import timezone, timedelta
 import asyncio
 import aiohttp
 import logging
 
-# ✅ Indian Standard Time
 IST = timezone(timedelta(hours=5, minutes=30))
 
 class Bot(Client):
@@ -29,15 +27,11 @@ class Bot(Client):
         me = await self.get_me()
         self.username = '@' + me.username
 
-        # ✅ Load monitor plugin before doing anything else
-        await init_keep_alive(self)
-
-        print('Bot Started Powered By @NeonFiles')
-
-        # ✅ Start the internal keep-alive pinger
+        # run keep alive without blocking plugin load
+        asyncio.create_task(init_keep_alive(self))
         asyncio.create_task(keep_alive())
 
-        # Log restart event
+        print('Bot Started Powered By @NeonFiles')
         await self.send_restart_log()
 
     async def stop(self, *args):
@@ -46,13 +40,11 @@ class Bot(Client):
 
     async def send_restart_log(self):
         now = datetime.datetime.now(IST)
-        date = now.strftime("%d-%b-%Y")
-        time = now.strftime("%I:%M %p")
         text = (
             f"<b>🤖 <i>Bot Deployed / Restarted ♻️</b></i>\n"
             f"<i><b>- {self.username}</i></b>\n\n"
-            f"<b>- <i>Dᴀᴛᴇ :</b> {date}</i>\n"
-            f"<b>- <i>Tɪᴍᴇ :</b> {time}</i>\n"
+            f"<b>- <i>Dᴀᴛᴇ :</b> {now.strftime('%d-%b-%Y')}</i>\n"
+            f"<b>- <i>Tɪᴍᴇ :</b> {now.strftime('%I:%M %p')}</i>\n"
             f"**- __@neonfiles__**"
         )
         try:
@@ -60,9 +52,7 @@ class Bot(Client):
         except Exception as e:
             print(f"Restart log failed: {e}")
 
-# ✅ Keep Alive Function
 async def keep_alive():
-    """Send a request every 300 seconds to keep the bot alive (if required)."""
     async with aiohttp.ClientSession() as session:
         while True:
             try:
@@ -72,8 +62,8 @@ async def keep_alive():
                 logging.error(f"Keep-alive request failed: {e}")
             await asyncio.sleep(300)
 
-# Handle /start and new user logging (no DB dependency)
-@Bot.on_message(filters.private & filters.command("start"))
+# ✅ This will now work again
+@Client.on_message(filters.private & filters.command("start"))
 async def start_cmd(client, message):
     user_id = message.from_user.id
     user_name = message.from_user.mention
@@ -93,5 +83,4 @@ async def start_cmd(client, message):
 
     await message.reply("Hey! You started me 🎉")
 
-# Run the bot
 Bot().run()
