@@ -1,8 +1,9 @@
-# Main.py
+# main.py
 from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, KEEP_ALIVE_URL
+from MyselfNeon.keep_alive_plugin import init_keep_alive  # ✅ Import plugin
 import datetime
-from datetime import timezone, timedelta  # ✅ Added for IST
+from datetime import timezone, timedelta
 import asyncio
 import aiohttp
 import logging
@@ -21,18 +22,22 @@ class Bot(Client):
             workers=150,
             sleep_threshold=10
         )
-        self.username = None  # will be set on start
+        self.username = None
 
     async def start(self):
         await super().start()
         me = await self.get_me()
         self.username = '@' + me.username
+
+        # ✅ Load monitor plugin before doing anything else
+        await init_keep_alive(self)
+
         print('Bot Started Powered By @NeonFiles')
 
-        # ✅ Start keep-alive task
+        # ✅ Start the internal keep-alive pinger
         asyncio.create_task(keep_alive())
 
-        # Send restart log
+        # Log restart event
         await self.send_restart_log()
 
     async def stop(self, *args):
@@ -40,9 +45,9 @@ class Bot(Client):
         print('Bot Stopped Bye')
 
     async def send_restart_log(self):
-        now = datetime.datetime.now(IST)  # ✅ Using IST
+        now = datetime.datetime.now(IST)
         date = now.strftime("%d-%b-%Y")
-        time = now.strftime("%I:%M %p")   # ✅ 12h format with AM/PM
+        time = now.strftime("%I:%M %p")
         text = (
             f"<b>🤖 <i>Bot Deployed / Restarted ♻️</b></i>\n"
             f"<i><b>- {self.username}</i></b>\n\n"
@@ -57,7 +62,7 @@ class Bot(Client):
 
 # ✅ Keep Alive Function
 async def keep_alive():
-    """Send a request every 150 seconds to keep the bot alive (if required)."""
+    """Send a request every 300 seconds to keep the bot alive (if required)."""
     async with aiohttp.ClientSession() as session:
         while True:
             try:
@@ -65,16 +70,14 @@ async def keep_alive():
                 logging.info("Sent keep-alive request.")
             except Exception as e:
                 logging.error(f"Keep-alive request failed: {e}")
-            await asyncio.sleep(150)
+            await asyncio.sleep(300)
 
 # Handle /start and new user logging (no DB dependency)
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_cmd(client, message):
     user_id = message.from_user.id
     user_name = message.from_user.mention
-
-    # Send new user log
-    now = datetime.datetime.now(IST)  # ✅ Using IST
+    now = datetime.datetime.now(IST)
     text = (
         "<b>#NewUser</b>\n"
         f"<b><i>@NeonSessionBot</i></b>\n\n"
