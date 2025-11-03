@@ -14,7 +14,6 @@ DEFAULT_INTERVAL = 500  # seconds
 status_cache = {}  # {url: "up"/"down"}
 failure_counts = {}  # {url: consecutive_failures}
 
-
 # ========================
 # INIT
 # ========================
@@ -34,7 +33,6 @@ async def init_keep_alive(bot: Client):
             running_tasks[url] = asyncio.create_task(ping_url(bot, url))
 
     logging.info(f"✅ Loaded {len(running_tasks)} monitors from DB.")
-
 
 # ========================
 # PING FUNCTION
@@ -64,7 +62,6 @@ async def ping_url(bot: Client, url: str):
 
             await asyncio.sleep(monitor_interval)
 
-
 # ========================
 # FAILURE HANDLER
 # ========================
@@ -80,7 +77,6 @@ async def handle_failure(bot: Client, url: str, error: str, notify_ids: set):
                 uid,
                 f"❌ [{url}] seems **DOWN!**\nError: `{error}`"
             )
-
 
 # ========================
 # COMMANDS
@@ -100,7 +96,6 @@ async def malive_cmd(bot, message):
     running_tasks[url] = asyncio.create_task(ping_url(bot, url))
     await message.reply(f"✅ Now monitoring:\n`{url}`")
 
-
 @Client.on_message(filters.command("msee"))
 async def msee_cmd(bot, message):
     """See all saved monitor URLs."""
@@ -111,7 +106,6 @@ async def msee_cmd(bot, message):
         [f"{i+1}. `{doc['url']}`" for i, doc in enumerate(urls)]
     )
     await message.reply(msg)
-
 
 @Client.on_message(filters.command("mstatus"))
 async def mstatus_cmd(bot, message):
@@ -124,7 +118,6 @@ async def mstatus_cmd(bot, message):
         emoji = "✅" if stat == "up" else ("❌" if stat == "down" else "⚙️")
         msg += f"{i}. {emoji} `{url}` - {stat.upper()}\n"
     await message.reply(msg)
-
 
 @Client.on_message(filters.command("mtime"))
 async def mtime_cmd(bot, message):
@@ -140,13 +133,11 @@ async def mtime_cmd(bot, message):
         reply_markup=buttons
     )
 
-
 @Client.on_callback_query(filters.regex("change_time"))
 async def change_time_cb(bot, query):
     await query.message.reply(
         "🕒 Send the new monitor interval in **seconds** (e.g., 600)"
     )
-
 
 @Client.on_message(filters.text & filters.private)
 async def time_setter(bot, message):
@@ -155,7 +146,6 @@ async def time_setter(bot, message):
     if message.text.isdigit():
         monitor_interval = int(message.text)
         await message.reply(f"✅ Monitor interval updated to {monitor_interval} seconds.")
-
 
 @Client.on_message(filters.command("mdel"))
 async def mdel_cmd(bot, message):
@@ -170,7 +160,6 @@ async def mdel_cmd(bot, message):
     msg += "\nSend numbers separated by commas (e.g., `1,3`)"
 
     await message.reply(msg)
-
 
 @Client.on_message(filters.regex(r"^\d+(,\d+)*$"))
 async def delete_selected(bot, message):
