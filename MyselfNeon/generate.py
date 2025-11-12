@@ -1,4 +1,14 @@
-#Generate.py
+# ---------------------------------------------------
+# File Name: Generate.py
+# Author: NeonAnurag
+# GitHub: https://github.com/MyselfNeon/
+# Telegram: https://t.me/MyelfNeon
+# Created: 2025-11-21
+# Last Modified: 2025-11-22
+# Version: Latest
+# License: MIT License
+# ---------------------------------------------------
+
 import config
 from telethon import TelegramClient
 from pyrogram import Client, filters

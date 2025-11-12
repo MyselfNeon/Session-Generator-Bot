@@ -1,4 +1,14 @@
-#Start.py
+# ---------------------------------------------------
+# File Name: Start.py
+# Author: NeonAnurag
+# GitHub: https://github.com/MyselfNeon/
+# Telegram: https://t.me/MyelfNeon
+# Created: 2025-11-21
+# Last Modified: 2025-11-22
+# Version: Latest
+# License: MIT License
+# ---------------------------------------------------
+
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from config import OWNER_ID, F_SUB
@@ -159,3 +169,7 @@ async def close_page(bot: Client, cb: CallbackQuery):
     await cb.message.delete()
     await cb.answer()
     
+
+# MyselfNeon
+# Don't Remove Credit 🥺
+# Telegram Channel @NeonFiles
