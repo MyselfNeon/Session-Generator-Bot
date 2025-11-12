@@ -13,3 +13,9 @@ COPY . .
 
 # Run both gunicorn and main.py
 CMD ["bash", "-c", "gunicorn app:app & python3 main.py"]
+
+
+# MyselfNeon
+# Don't Remove Credit 🥺
+# Telegram Channel @NeonFiles
+
