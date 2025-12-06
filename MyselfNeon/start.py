@@ -115,7 +115,7 @@ async def chk(bot: Client, cb: CallbackQuery):
 # --- About page callback ---
 @Client.on_callback_query(filters.regex("about_btn"))
 async def about_page(bot: Client, cb: CallbackQuery):
-    me = (await bot.get_me()).mention
+    me = (await bot.get_me()).mention  # <-- added dynamic mention
 
     about_text = f"""<b><blockquote>‣ 📝 𝐌𝐘 𝐃𝐄𝐓𝐀𝐈𝐋𝐒</blockquote>
 <blockquote><i>• Mʏ Nᴀᴍᴇ : {me}
@@ -140,20 +140,11 @@ async def about_page(bot: Client, cb: CallbackQuery):
         ]
     )
 
-    # 1. Edit the message text
     await cb.message.edit_text(
         about_text,
         reply_markup=about_buttons,
-        disable_web_page_preview=True
+        disable_web_page_preview=True  # <-- web preview disabled
     )
-
-    # 2. React to the message (cb.message refers to the message that was clicked/edited)
-    try:
-        # We assume REACTIONS and random are already imported/defined globally as in your file
-        await cb.message.react(emoji=random.choice(REACTIONS))
-    except Exception as e:
-        print(f"Reaction failed: {e}")
-
     await cb.answer()
 
 @Client.on_callback_query(filters.regex("back_to_start"))
