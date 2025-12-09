@@ -19,7 +19,7 @@ SET_COMMANDS = [
 @Client.on_message(filters.command("ncommands"))
 async def sync_bot_commands(client: Client, message: Message):
     # 01. Notify User and Start Delay
-    msg = await message.reply_text("**🔄 __Initializing Command Refresh ... \nWaiting 3 Seconds ...__**")
+    msg = await message.reply_text("**🔄 __Initializing Command Refresh ... \n⏰ Waiting 3 Seconds ...__**")
     
     # 02. Wait 3 Seconds as requested
     await asyncio.sleep(3)
@@ -36,7 +36,7 @@ async def sync_bot_commands(client: Client, message: Message):
         print(f"✅ Commands Synced with Telegram: {SET_COMMANDS}")
         
         # 05. --- Confirm Success ---
-        await msg.edit_text("**✅ __Success !!\n🎉 Commands Updated Successfully.**\n👀 Close Telegram and Return back to see Changes. - by **@MyselfNeon**__")
+        await msg.edit_text("**✅ __Success !!\n🎉 Commands Updated Successfully.**\n👀 Close Telegram and Return back to see Changes. - by **@MyselfNeon** 🆘__")
         
     except Exception as e:
         print(f"✗ Failed to Sync Commands: {e}")
