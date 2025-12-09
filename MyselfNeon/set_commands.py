@@ -19,7 +19,7 @@ SET_COMMANDS = [
 @Client.on_message(filters.command("ncommands"))
 async def sync_bot_commands(client: Client, message: Message):
     # 01. Notify User and Start Delay
-    msg = await message.reply_text("***Initializing Command Refresh... Waiting 3 Seconds...***")
+    msg = await message.reply_text("**🔄 __Initializing Command Refresh ... \nWaiting 3 Seconds ...__**")
     
     # 02. Wait 3 Seconds as requested
     await asyncio.sleep(3)
