@@ -1,5 +1,5 @@
 # ------------------------------------------------
-# File Name: Set_Commands.py
+# File Name: NeonCommands.py
 # Author: https://t.me/myselfneon
 # Description: Auto Add Commands via /ncommands (Owner Only)
 # ------------------------------------------------
@@ -12,16 +12,12 @@ from pyrogram.types import BotCommand, Message
 # --- Edit This List ---
 SET_COMMANDS = [
     ("start", "𝘊𝘩𝘦𝘤𝘬 𝘈𝘭𝘪𝘷𝘦 𝘚𝘵𝘢𝘵𝘶𝘴"),
-    ("help", "𝘏𝘰𝘸 𝘵𝘰 𝘜𝘴𝘦 𝘔𝘦"),
-    ("login", "𝘓𝘰𝘨𝘪𝘯 𝘠𝘰𝘶𝘳 𝘛𝘦𝘭𝘦𝘨𝘳𝘢𝘮 𝘚𝘦𝘴𝘴𝘪𝘰𝘯"),
-    ("logout", "𝘓𝘰𝘨𝘰𝘶𝘵 𝘠𝘰𝘶𝘳 𝘚𝘦𝘴𝘴𝘪𝘰𝘯"),
-    ("cancel", "𝘊𝘢𝘯𝘤𝘦𝘭 𝘢𝘯𝘺 𝘖𝘯𝘨𝘰𝘪𝘯𝘨 𝘛𝘢𝘴𝘬"),
-    ("users", "𝘊𝘩𝘦𝘤𝘬 𝘛𝘰𝘵𝘢𝘭 𝘜𝘴𝘦𝘳𝘴 (𝘈𝘥𝘮𝘪𝘯)"),
-    ("broadcast", "𝘉𝘳𝘰𝘢𝘥𝘤𝘢𝘴𝘵 𝘔𝘴𝘨𝘴 𝘵𝘰 𝘜𝘴𝘦𝘳𝘴 (𝘈𝘥𝘮𝘪𝘯)")
+    ("help", "𝘎𝘦𝘯𝘦𝘳𝘢𝘵𝘦 𝘚𝘦𝘴𝘴𝘪𝘰𝘯 𝘚𝘵𝘳𝘪𝘯𝘨𝘴"),
+    ("login", "𝘉𝘳𝘰𝘢𝘥𝘤𝘢𝘴𝘵 𝘔𝘴𝘨𝘴 𝘵𝘰 𝘜𝘴𝘦𝘳𝘴")
 ]
 
 # --- Internal Command Handler ---
-@Client.on_message(filters.command("ncommands") & filters.user(OWNER_ID))
+@Client.on_message(filters.command("neoncmd") & filters.user(OWNER_ID))
 async def sync_bot_commands(client: Client, message: Message):
 
     msg = await message.reply_text("**⏱️ __Wait 3 Seconds while I load your Commands through plugin System.__**")
