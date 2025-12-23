@@ -51,14 +51,14 @@ class Bot(Client):
 
     async def send_restart_log(self):
         now = datetime.datetime.now(IST)  # ✅ Using IST
-        date = now.strftime("%d-%b-%Y")
-        time = now.strftime("%I:%M %p")   # ✅ 12h format with AM/PM
+        date = now.strftime("%d/%m/%y")   # ✅ Adjusted to match your format
+        time = now.strftime("%I:%M:%S %p") # ✅ Adjusted to match your format
         text = (
-            f"<b>🤖 <i>Bot Deployed / Restarted ♻️</b></i>\n"
-            f"<i><b>- {self.username}</i></b>\n\n"
-            f"<b>- <i>Dᴀᴛᴇ :</b> {date}</i>\n"
-            f"<b>- <i>Tɪᴍᴇ :</b> {time}</i>\n"
-            f"**- __@neonfiles__**"
+            f"⌬ Restarted Successfully!\n"
+            f"┟ Date: {date}\n"
+            f"┠ Time: {time}\n"
+            f"┠ TimeZone: Asia/Kolkata\n"
+            f"┖ Version: v3.0.8-x"
         )
         try:
             await self.send_message(LOG_CHANNEL, text)
@@ -77,6 +77,7 @@ async def keep_alive():
                 logging.error(f"Keep-alive request failed: {e}")
             await asyncio.sleep(100)
 
+# --- HANDLERS ---
 # Handle /start and new user logging (no DB dependency)
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_cmd(client, message):
