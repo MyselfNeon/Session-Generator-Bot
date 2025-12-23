@@ -87,13 +87,16 @@ async def start_cmd(client, message):
 
     # Send new user log
     now = datetime.datetime.now(IST)  # ✅ Using IST
+    date = now.strftime("%d/%m/%y")
+    time = now.strftime("%I:%M.%S %p") # ✅ Format: 01:37.08 PM
+    
     text = (
-        "<b>#NewUser</b>\n"
-        f"<b><i>@NeonSessionBot</i></b>\n\n"
-        f"<b>🆔 <i>Usᴇʀ ID :</i></b> <code>{user_id}</code>\n"
-        f"<b>👤 <i>Usᴇʀ : {user_name}</i></b>\n"
-        f"<b>📆 <i>Dᴀᴛᴇ :</b> {now.strftime('%d-%b-%Y')}</i>\n"
-        f"<b>⏰ <i>Tɪᴍᴇ :</b> {now.strftime('%I:%M %p')}</i>"
+        f"**⌬ #NewUser 🆕👤** \n"
+        f"**┟ Bot:** __{client.username}__\n"
+        f"**┟ User:** __{user_name}__\n"
+        f"**┟ User ID:** <code>{user_id}</code>\n"
+        f"**┟ Date:** __{date}__\n"
+        f"**┖ Time:** __{time}__"
     )
     try:
         await client.send_message(LOG_CHANNEL, text)
