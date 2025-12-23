@@ -91,7 +91,7 @@ async def start_cmd(client, message):
     time = now.strftime("%I:%M.%S %p") # ✅ Format: 01:37.08 PM
     
     text = (
-        f"**⌬ #NewUser 🆕👤** \n"
+        f"**⌬ 🆕👤 #NewUser** \n"
         f"**┟ Bot:** __{client.username}__\n"
         f"**┟ User:** __{user_name}__\n"
         f"**┟ User ID:** <code>{user_id}</code>\n"
