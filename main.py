@@ -51,14 +51,15 @@ class Bot(Client):
 
     async def send_restart_log(self):
         now = datetime.datetime.now(IST)  # ✅ Using IST
-        date = now.strftime("%d/%m/%y")   # ✅ Adjusted to match your format
-        time = now.strftime("%I:%M:%S %p") # ✅ Adjusted to match your format
+        date = now.strftime("%d/%m/%y")   # ✅ Format: 22/12/25
+        time = now.strftime("%I:%M:%S %p") # ✅ Format: 01:24:31 AM
         text = (
-            f"⌬ Restarted Successfully!\n"
-            f"┟ Date: {date}\n"
-            f"┠ Time: {time}\n"
-            f"┠ TimeZone: Asia/Kolkata\n"
-            f"┖ Version: v3.0.8-x"
+            f"**⌬ Restarted Successfully !**\n"
+            f"**┟ Bot:** __{self.username}__\n"
+            f"**┟ Date:** __{date}__\n"
+            f"**┠ Time:** __{time}__\n"
+            f"**┠ TimeZone:** __Asia/Kolkata__\n"
+            f"**┖ Version:** __v3.0.8-x__"
         )
         try:
             await self.send_message(LOG_CHANNEL, text)
