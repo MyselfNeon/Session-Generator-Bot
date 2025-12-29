@@ -60,7 +60,7 @@ def upload_file(file_path):
                     "https://api.imgbb.com/1/upload",
                     params={"key": imgbb_key},
                     files={"image": f},
-                    timeout=15,
+                    timeout=60,
                 )
             if response.ok:
                 data = response.json()["data"]
@@ -71,7 +71,7 @@ def upload_file(file_path):
     # 2. Fallback to Envs.sh
     try:
         with open(file_path, "rb") as f:
-            response = requests.post("https://envs.sh", files={"file": f}, timeout=15)
+            response = requests.post("https://envs.sh", files={"file": f}, timeout=60)
         if response.ok:
             return {"provider": "envs.sh", "url": response.text.strip()}
     except Exception as e:
