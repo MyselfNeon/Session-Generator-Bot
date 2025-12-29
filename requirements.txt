@@ -17,8 +17,6 @@ psutil
 pyrofork==2.3.45
 Telethon
 TgCrypto
-telegraph
-requests
 
 # --- Environment Management ---
 python-dotenv
